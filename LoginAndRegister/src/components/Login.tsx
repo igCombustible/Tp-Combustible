@@ -1,5 +1,5 @@
-import {useRef, useEffect, useState, useContext} from 'react';
-import AuthContext from '../context/AuthProvider';
+import React, {useRef, useEffect, useState, useContext} from 'react';
+import AuthContext from '../context/AuthProvider.tsx';
 import { Link } from 'react-router-dom';
 import axios from '../api/axios';
 
@@ -7,9 +7,16 @@ import axios from '../api/axios';
 const LOGIN_URL = '/auth/generateToken';
 
 const Login = () => {
-const {setAuth} = useContext(AuthContext);
-const userRef = useRef();
-const errRef = useRef();
+
+const authContext = useContext(AuthContext);
+
+if(!authContext){
+  throw new Error('AuthContext must be used within an AuthProvider')
+}
+
+const {setAuth} = authContext;
+const userRef = useRef<HTMLInputElement>(null);
+const errRef = useRef<HTMLParagraphElement>(null);
 
 const [user, setUser] = useState('');
 const [pwd, setPwd] = useState('');
@@ -17,7 +24,7 @@ const [errMsg, setErrMsg] = useState('');
 const [sucess, setSuccess] = useState(false);
 
 useEffect(() => {
-  userRef.current.focus();
+  userRef.current?.focus();
 }, [])
 
 useEffect(() => {
@@ -53,7 +60,7 @@ const handleSubmit = async (e) => {
     } else {
       setErrMsg('Login Failed');
     }
-    errRef.current.focus();
+    errRef.current?.focus();
   }
 }
 
