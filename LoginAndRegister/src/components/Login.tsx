@@ -2,6 +2,7 @@ import React, {useRef, useEffect, useState, useContext} from 'react';
 import AuthContext from '../context/AuthProvider.tsx';
 import { Link ,  useNavigate } from 'react-router-dom';
 import axios from '../api/axios';
+import { AuthStatus } from '../context/AuthStatus.tsx';
 
 
 const LOGIN_URL = '/auth/generateToken';
@@ -32,9 +33,20 @@ export const Login = () => {
     setErrMsg('');
   }, [user,pwd])
 
+  useEffect(() => {
+    console.log("Auth Context Updated: ", auth);          {/* lo paso fede */}
+  }, [auth]);
+
+
+  useEffect(() => {
+    if (sucess) {
+      navigate('/home');
+    }
+  }, [sucess, navigate]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    //console.log(user,pwd);
+    
     try{
       const response = await axios.post(LOGIN_URL,
         JSON.stringify({username: user, password: pwd}),
@@ -44,17 +56,18 @@ export const Login = () => {
 
         }
         );
-        console.log(JSON.stringify(response?.data));              {/* imprime el token en la consola */}
+        console.log(JSON.stringify(response?.data));              {/* imprime el token y la lista de roles en la consola */}
         const accessToken = response?.data?.token;
         const roles = response?.data?.roles;
         setAuth({user, pwd, roles, accessToken});
       setUser('');
       setPwd('');
-      console.log(auth);
       
       setSuccess(true);
 
-      navigate("/home")
+      
+
+
     } catch (err){
       if(!err?.response){
         setErrMsg('No Server Response');
@@ -74,6 +87,8 @@ export const Login = () => {
         <section>
           <h1>Tu estas loggeado!</h1>
           <br />
+          {/* <AuthStatus/>  */}
+          
           <p> <Link to="/Home">Entrar</Link> </p>
         </section>
 
@@ -87,7 +102,7 @@ export const Login = () => {
                 type="email"
                 placeholder="Usuario"
                 ref={userRef}
-                autoComplete='off'
+                autoComplete='on'
                 onChange={(e)=> setUser(e.target.value)}
                 value ={user}
                 required />
