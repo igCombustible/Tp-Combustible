@@ -1,8 +1,19 @@
+//import { useNavigate } from "react-router-dom";
 import "../Home.css"; 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { AgregarVehiculo } from "./AgregarVehiculo";
 
 export const Home = () => {
+    //const navigate = useNavigate();
+    const [addVehiculo,setAddVehiculo] = useState(false);
+    
+    function handleAgregarVehiculo(e): void {
+        setAddVehiculo(true);
+    }
+
+
     return (
+        <>
         <nav className="navbar navbar-expand-lg navbar-custom">
             <div className="container-fluid">
                 <a className="navbar-brand" href="#">nombre del usuario</a>
@@ -31,5 +42,20 @@ export const Home = () => {
                 </div>
             </div>
         </nav>
+        <div>
+        <button 
+            className="btn btn-primary" 
+            onClick={handleAgregarVehiculo}>
+                Agregar un vehículo
+        </button>
+        <div>
+        {addVehiculo ? (
+            <section>
+                <AgregarVehiculo/>
+            </section>
+        ) : null}
+        </div>
+    </div>
+    </>
     );
 };
