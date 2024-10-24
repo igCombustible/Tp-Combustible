@@ -1,6 +1,6 @@
 import React, {useRef, useEffect, useState, useContext} from 'react';
 import AuthContext from '../context/AuthProvider.tsx';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from '../api/axios';
 
 
@@ -9,12 +9,13 @@ const LOGIN_URL = '/auth/generateToken';
 const Login = () => {
 
 const authContext = useContext(AuthContext);
+const navigate = useNavigate()
 
 if(!authContext){
   throw new Error('AuthContext must be used within an AuthProvider')
 }
 
-const {setAuth} = authContext;
+const {auth,setAuth} = authContext;
 const userRef = useRef<HTMLInputElement>(null);
 const errRef = useRef<HTMLParagraphElement>(null);
 
@@ -30,6 +31,16 @@ useEffect(() => {
 useEffect(() => {
   setErrMsg('');
 }, [user,pwd])
+
+useEffect(() => {
+  console.log("Auth Context Updated: ", auth);          {/* lo paso fede */}
+}, [auth]);
+useEffect(() => {
+  if (sucess) {
+    navigate('/home');
+  }
+}, [sucess, navigate]);
+
 
 const handleSubmit = async (e) => {
   e.preventDefault();
@@ -69,7 +80,7 @@ const handleSubmit = async (e) => {
       <section>
         <h1>Tu estas loggeado!</h1>
         <br />
-        <p> <Link to="/Login">Inicia Sesion</Link> </p>
+        <p> <Link to="/Home">Entrar</Link> </p>
       </section>
 
     ) : (
