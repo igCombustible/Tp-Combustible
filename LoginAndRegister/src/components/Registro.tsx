@@ -52,7 +52,7 @@ const Registro: React.FC = () => {
     }
     try {
       const response = await axios.post(REGISTER_URL, 
-        JSON.stringify({ name: user, email, password: pwd, usuarioRoles: [{ rol: { id: 1 } }] }),
+        JSON.stringify({ name: user, email, password: pwd, usuarioRoles: [{ rol: { id: 'a82b27b2-9311-11ef-9fa8-00e04c694da8' } }] }),
         { headers: { 'Content-Type': 'application/json' }, withCredentials: true }
       );
       console.log("Registro exitoso:", response.data);

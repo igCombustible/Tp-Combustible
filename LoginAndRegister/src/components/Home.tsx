@@ -1,8 +1,16 @@
 import "../Home.css"; 
-import React from 'react';
+import React, { useState } from 'react';
+import {AgregarVehiculo} from './AgregarVehiculo'
 
 export const Home = () => {
+
+    const [addVehiculo,setAddVehiculo] = useState(false);
+
+    function handleAgregarVehiculo(e): void {
+        setAddVehiculo(true);
+    }
     return (
+        <>
         <nav className="navbar navbar-expand-lg navbar-custom">
             <div className="container-fluid">
                 <a className="navbar-brand" href="#">nombre del usuario</a>
@@ -31,5 +39,20 @@ export const Home = () => {
                 </div>
             </div>
         </nav>
+        <div>
+            <button
+            className="btn btn-primary"
+            onClick={handleAgregarVehiculo}
+            >Agregar vehiculo
+            </button>
+        </div>
+        <div>
+            {addVehiculo ? (
+                <section>
+                    <AgregarVehiculo />
+                </section>
+            ) : null}
+        </div>
+        </>
     );
 };
