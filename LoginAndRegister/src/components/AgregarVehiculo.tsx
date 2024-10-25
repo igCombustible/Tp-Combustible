@@ -33,7 +33,7 @@ export const AgregarVehiculo = () => {
                                 ultimo_km: 0, 
                                 estado_vehiculo: false }),
             { headers: { 
-              'Authorization': 'bearer {auth.accessToken}', 
+              'Authorization': `Bearer ${auth.accessToken}`, 
               'Content-Type': 'application/json' 
             }, withCredentials: true});
         } catch (err: any) {

@@ -58,6 +58,7 @@ export const Login = () => {
         );
         console.log(JSON.stringify(response?.data));              {/* imprime el token y la lista de roles en la consola */}
         const accessToken = response?.data?.token;
+        console.log(accessToken);
         const roles = response?.data?.roles;
         setAuth({user, pwd, roles, accessToken});
       setUser('');
