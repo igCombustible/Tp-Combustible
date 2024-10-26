@@ -1,0 +1,45 @@
+/* Asegura que el contenedor ocupe todo el ancho de la página */
+.table-container {
+    width: 100vw;
+    overflow-x: auto; /* Permite desplazamiento horizontal si el contenido es más ancho que la pantalla */
+    padding: 10px;
+    box-sizing: border-box;
+  }
+  
+  /* Estilos generales de la tabla */
+  table {
+    width: 100%;
+    max-width: 100%;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+    margin: 20px 0;
+    font-size: 16px;
+    text-align: left;
+  }
+  
+  /* Encabezado */
+  table thead th {
+    background-color: #4CAF50; /* Color de fondo del encabezado */
+    color: white;
+    padding: 12px 15px;
+    border-bottom: 2px solid #ddd;
+    font-weight: bold;
+  }
+  
+  /* Filas */
+  table tbody tr {
+    border-bottom: 1px solid #ddd;
+  }
+  
+  table tbody tr:nth-child(even) {
+    background-color: #f2f2f2; /* Color alterno para las filas pares */
+  }
+  
+  table tbody tr:hover {
+    background-color: #ddd; /* Color al pasar el mouse */
+  }
+  
+  /* Celdas del cuerpo */
+  table tbody td {
+    padding: 10px 15px;
+  }
