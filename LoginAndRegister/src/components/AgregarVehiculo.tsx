@@ -1,6 +1,6 @@
 import axios from '../api/axios';
 import React, { useContext, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import AuthContext from '../context/AuthProvider';
 import Nav from './Navbar';
 
@@ -12,7 +12,7 @@ export const AgregarVehiculo = () => {
     const [marca, setMarca] = useState<string>(''); 
     const [modelo, setModelo] = useState<string>('');
     const [patente, setPatente] = useState<string>('');
-
+    const [suceso,setSuceso] = useState<boolean>(false);
     const [errMsg, setErrMsg] = useState<string>('');
 
     if (!authContext){
@@ -37,24 +37,32 @@ export const AgregarVehiculo = () => {
               'Authorization': `Bearer ${auth.accessToken}`, 
               'Content-Type': 'application/json' 
             }, withCredentials: true});
+            setSuceso(true);
         } catch (err: any) {
             
             if (!err?.response) {
                 setErrMsg('El servicio no responde');
             } else if (err.response?.status === 409) {
-                setErrMsg('Usuario ya tomado');
+                setErrMsg('Vehiculo con esa patente ya existe');
             } else {
                 setErrMsg('Registro fallido');
         }
-      }
-
-        // Después de agregar el vehículo, redirigir al Home
-        navigate('/Home');
+      } 
     };
+
+    const cancelarOperacion = () => {
+      navigate('/Home');
+    }
 
     return (
     <>
     <Nav />
+    {suceso ? (
+    <div>
+      <p>Se ha creado con exito el vehiculo</p>
+      <p><Link to="/Home">Ve al listado de vehiculos</Link></p>
+    </div>
+    ): (
     <div className="container mt-5">
       <h2>Agregar Vehiculo</h2>
       <form onSubmit={handleSubmit}>
@@ -91,9 +99,12 @@ export const AgregarVehiculo = () => {
             required
           />
         </div>
-        <button type="submit" className="btn btn-primary">+</button>
+        <button type="submit" className="btn btn-primary" onClick={handleSubmit}>Confirmar</button>
+        <button type="button" className="btn btn-primary" onClick={cancelarOperacion}>Cancelar</button>
       </form>
-    </div>
+    </div> 
+    )
+    }
     </>
   );
 };
