@@ -2,6 +2,7 @@ import axios from '../api/axios';
 import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AuthContext from '../context/AuthProvider';
+import Nav from './Navbar';
 
 
 export const AgregarVehiculo = () => {
@@ -30,7 +31,7 @@ export const AgregarVehiculo = () => {
             JSON.stringify({    patente: patente,
                                 marca: marca, 
                                 modelo: modelo, 
-                                ultimo_km: 0, 
+                                ultimoValorConocidoKm: 0, 
                                 estado_vehiculo: false }),
             { headers: { 
               'Authorization': `Bearer ${auth.accessToken}`, 
@@ -53,7 +54,7 @@ export const AgregarVehiculo = () => {
 
     return (
     <>
-    
+    <Nav />
     <div className="container mt-5">
       <h2>Agregar Vehiculo</h2>
       <form onSubmit={handleSubmit}>

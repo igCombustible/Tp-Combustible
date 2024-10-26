@@ -1,0 +1,35 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+.navbar {
+    background-color: #333;
+    color: white;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed; /* Fija la navbar en la parte superior */
+    top: 0;
+    left: 0; /* Asegura que empiece desde el borde izquierdo */
+    width: 100%; /* Asegura que ocupe todo el ancho */
+    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+}
+.navbar a {
+    color: black;
+    text-decoration: none;
+    padding: 15px;
+}
+.navbar a:hover {
+    background-color: #575757;
+}
+.navbar .logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+/* Añadir margen superior al contenido para evitar que esté detrás de la navbar */
+.content {
+    margin-top: 60px; /* Ajustar según la altura de la navbar */
+    padding: 20px; /* Espaciado para el contenido */
+}
