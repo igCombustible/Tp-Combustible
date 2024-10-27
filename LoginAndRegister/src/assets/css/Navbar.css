@@ -21,15 +21,44 @@ body {
     text-decoration: none;
     padding: 15px;
 }
-.navbar a:hover {
-    background-color: #575757;
+.navbar .nav-link:hover,
+.navbar .dropdown-item:hover {
+    color: rgb(255, 255, 255); /* Asegura que el texto siga siendo visible al hacer hover */
 }
+
+.navbar .dropdown-item:hover {
+    color: rgb(13, 110, 253);
+}
+
 .navbar .logo {
     font-size: 24px;
     font-weight: bold;
 }
 /* Añadir margen superior al contenido para evitar que esté detrás de la navbar */
 .content {
-    margin-top: 60px; /* Ajustar según la altura de la navbar */
-    padding: 20px; /* Espaciado para el contenido */
+    margin-top: 60px; 
+    padding: 20px; 
+}
+.bg-body-tertiary {
+    background-color: rgb(13, 110, 253) !important; 
+}
+/* Contenedor para el checkbox y su etiqueta */
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.checkbox-label {
+    font-size: 16px;
+    margin-left: 8px; /* Espacio entre el checkbox y el texto */
+    color: #333;
+}
+
+input[type="checkbox"] {
+    width: 20px; /* Ajuste de tamaño para el checkbox */
+    height: 20px;
+    cursor: pointer;
+    accent-color: rgb(13, 110, 253); /* Color de marca para checkbox en navegadores que lo soporten */
+    margin: 0; /* Eliminado el margen para simplificar */
 }

@@ -4,6 +4,7 @@ import { Login } from './components/Login';
 import Registro from './components/Registro';
 import { Home } from './components/Home';
 import { AgregarVehiculo } from './components/AgregarVehiculo';
+import { EditarVehiculo } from './components/EditarVehiculo';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/" element={<Login />} /> 
           <Route path="/Home" element={<Home />} /> 
           <Route path="/vehiculo/agregarVehiculo" element={<AgregarVehiculo />} />
+          <Route path="/vehiculo/editarVehiculo/:patente" element={<EditarVehiculo />} />
         </Routes>
       </div>
     </Router>
