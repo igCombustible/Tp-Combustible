@@ -34,7 +34,7 @@ export const AgregarVehiculo = () => {
                                 ultimoValorConocidoKm: 0, 
                                 estado_vehiculo: false }),
             { headers: { 
-              'Authorization': `Bearer ${auth.accessToken}`, 
+              'Authorization': `Bearer ${sessionStorage.Token}`, 
               'Content-Type': 'application/json' 
             }, withCredentials: true});
             setSuceso(true);

@@ -5,6 +5,7 @@ import Registro from './components/Registro';
 import { Home } from './components/Home';
 import { AgregarVehiculo } from './components/AgregarVehiculo';
 import { EditarVehiculo } from './components/EditarVehiculo';
+import { EliminarVehiculo } from './components/EliminarVehiculo';
 
 function App() {
   return (
@@ -17,6 +18,8 @@ function App() {
           <Route path="/Home" element={<Home />} /> 
           <Route path="/vehiculo/agregarVehiculo" element={<AgregarVehiculo />} />
           <Route path="/vehiculo/editarVehiculo/:patente" element={<EditarVehiculo />} />
+          <Route path="/vehiculo/eliminarVehiculo/:patente" element={<EliminarVehiculo />} />
+          
         </Routes>
       </div>
     </Router>

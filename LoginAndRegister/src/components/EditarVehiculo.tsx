@@ -27,7 +27,7 @@ export const EditarVehiculo = () => {
             try {
                 const response = await axios.get(`/auth/vehiculo/${patente}`, {
                     headers: {
-                        'Authorization': `Bearer ${auth.accessToken}`
+                        'Authorization': `Bearer ${sessionStorage.Token}`
                     }
                 });
                 const vehiculo = response.data;
@@ -56,7 +56,7 @@ export const EditarVehiculo = () => {
                 }),
                 {
                     headers: {
-                        'Authorization': `Bearer ${auth.accessToken}`,
+                        'Authorization': `Bearer ${sessionStorage.Token}`,
                         'Content-Type': 'application/json'
                     },
                     withCredentials: true

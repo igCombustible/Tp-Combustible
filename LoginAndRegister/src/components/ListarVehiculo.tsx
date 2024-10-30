@@ -32,7 +32,7 @@ export const ListarVehiculo = () => {
         try {
             const response = await axios.get(OBTENERVEHICULOS,
                 { headers: { 
-                  'Authorization': `Bearer ${auth.accessToken}`, 
+                  'Authorization': `Bearer ${sessionStorage.Token}`, 
                   'Content-Type': 'application/json' 
                 }, withCredentials: true});
             setVehiculos(response.data);
@@ -46,6 +46,10 @@ export const ListarVehiculo = () => {
     const handleEdit = (patente: string) => {
         navigate(`/vehiculo/editarVehiculo/${patente}`);
     };
+    const handleDelete = (patente: string) => {
+        navigate(`/vehiculo/eliminarVehiculo/${patente}`);
+    };
+
 
     return (
         <>
@@ -71,7 +75,10 @@ export const ListarVehiculo = () => {
                                 <td>{vehiculo.modelo}</td>
                                 <td>{vehiculo.ultimoValorConocidoKm}</td>
                                 <td>
-                                    <button onClick={() => handleEdit(vehiculo.patente)}>Editar</button>
+                                    <div className="botones-accion">
+                                        <button className="edit-button" onClick={() => handleEdit(vehiculo.patente)}>Editar</button>
+                                        <button className="delete-button" onClick={() => handleDelete(vehiculo.patente)}>Eliminar</button>
+                                    </div>
                                 </td>
                             </tr>
                         ))}
