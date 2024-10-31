@@ -5,7 +5,7 @@ import axios from '../api/axios';
 import { AuthStatus } from '../context/AuthStatus.tsx';
 
 
-const LOGIN_URL = '/auth/generateToken';
+const LOGIN_URL = '/usuario/generateToken';
 
 export const Login = () => {
 

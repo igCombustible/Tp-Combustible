@@ -15,7 +15,7 @@ interface Vehiculo {
 
 export const ListarVehiculo = () => {
     
-    const OBTENERVEHICULOS = '/auth/vehiculo/todosLosVehiculos';
+    const OBTENERVEHICULOS = '/vehiculo';
     const authContext = useContext(AuthContext);
     const [vehiculos, setVehiculos] = useState<Vehiculo[]>([]);
     const navigate = useNavigate(); 

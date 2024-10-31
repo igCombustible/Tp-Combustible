@@ -15,7 +15,7 @@ export const EliminarVehiculo = () => {
     }
 
     const { auth } = authContext;
-    const ELIMINAR_VEHICULO = `/auth/vehiculo/vehiculo/${patente}`; 
+    const ELIMINAR_VEHICULO = `/vehiculo/${patente}`; 
 
     const handleDelete = async () => {
         try {

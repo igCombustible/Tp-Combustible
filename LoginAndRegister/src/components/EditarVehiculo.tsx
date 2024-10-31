@@ -19,13 +19,13 @@ export const EditarVehiculo = () => {
     }
     
     const { auth } = authContext;
-    const EDITAR_VEHICULO = `/auth/vehiculo/editarVehiculo/${patente}`; 
+    const EDITAR_VEHICULO = `/vehiculo/${patente}`; 
     
     
     useEffect(() => {
         const buscarVehiculo = async () => {
             try {
-                const response = await axios.get(`/auth/vehiculo/${patente}`, {
+                const response = await axios.get(`/vehiculo/${patente}`, {
                     headers: {
                         'Authorization': `Bearer ${sessionStorage.Token}`
                     }

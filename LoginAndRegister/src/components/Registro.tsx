@@ -5,7 +5,7 @@ import axios from '../api/axios';
 const USER_REGEX = /^[a-zA-Z][a-zA-Z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,24}$/;
 const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@(gmail|hotmail|yahoo)\.com$/;
-const REGISTER_URL = '/auth/addNewUser';
+const REGISTER_URL = '/usuario/registrarse';
 
 const Registro: React.FC = () => {
   const userRef = useRef<HTMLInputElement>(null);
@@ -52,7 +52,7 @@ const Registro: React.FC = () => {
     }
     try {
       const response = await axios.post(REGISTER_URL, 
-        JSON.stringify({ name: user, email, password: pwd, usuarioRoles: [{ rol: { id: '896dbeae-93a9-11ef-9fa8-00e04c694da8' } }] }),
+        JSON.stringify({ name: user, email, password: pwd, usuarioRoles: [{ rol: { id: '209d5d1d-971c-11ef-9fa8-00e04c694da8' } }] }),
         { headers: { 'Content-Type': 'application/json' }, withCredentials: true }
       );
       console.log("Registro exitoso:", response.data);

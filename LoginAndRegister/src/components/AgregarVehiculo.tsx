@@ -19,7 +19,7 @@ export const AgregarVehiculo = () => {
       throw new Error('asdasd');
     }
     const {auth,setAuth} = authContext;
-    const AGREGARVEHICULO = '/auth/vehiculo/agregarVehiculo';
+    const AGREGARVEHICULO = '/vehiculo';
     const navigate = useNavigate();
 
     // Manejar el envío del formulario
