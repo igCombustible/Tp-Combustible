@@ -3,6 +3,7 @@ import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import AuthContext from '../context/AuthProvider';
 import {Nav} from './Navbar';
+import apiClient from '../api/apiService';
 
 
 export const AgregarVehiculo = () => {
@@ -27,16 +28,12 @@ export const AgregarVehiculo = () => {
         e.preventDefault();
         
         try {
-            const response = await axios.post(AGREGARVEHICULO, 
+            const response = await apiClient.post(AGREGARVEHICULO, 
             JSON.stringify({    patente: patente,
                                 marca: marca, 
                                 modelo: modelo, 
                                 ultimoValorConocidoKm: 0, 
-                                estado_vehiculo: false }),
-            { headers: { 
-              'Authorization': `Bearer ${sessionStorage.Token}`, 
-              'Content-Type': 'application/json' 
-            }, withCredentials: true});
+                                estado_vehiculo: false }))
             setSuceso(true);
         } catch (err: any) {
             

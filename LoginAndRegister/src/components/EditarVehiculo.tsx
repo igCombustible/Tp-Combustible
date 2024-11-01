@@ -1,8 +1,8 @@
-import axios from '../api/axios';
 import React, { FormEvent, useContext, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import AuthContext from '../context/AuthProvider';
 import {Nav} from './Navbar';
+import apiClient from '../api/apiService';
 
 export const EditarVehiculo = () => {
     const authContext = useContext(AuthContext);
@@ -25,11 +25,7 @@ export const EditarVehiculo = () => {
     useEffect(() => {
         const buscarVehiculo = async () => {
             try {
-                const response = await axios.get(`/vehiculo/${patente}`, {
-                    headers: {
-                        'Authorization': `Bearer ${sessionStorage.Token}`
-                    }
-                });
+                const response = await apiClient.get(`/vehiculo/${patente}`);
                 const vehiculo = response.data;
                 setMarca(vehiculo.marca);
                 setModelo(vehiculo.modelo);
@@ -39,7 +35,6 @@ export const EditarVehiculo = () => {
                 setErrMsg('No se pudo cargar los datos del vehículo');
             }
         };
-        
         buscarVehiculo();
     }, [patente, auth.accessToken]);
 
@@ -47,20 +42,13 @@ export const EditarVehiculo = () => {
         e.preventDefault();
 
         try {
-            await axios.put(EDITAR_VEHICULO,
+            await apiClient.put(EDITAR_VEHICULO,
                 JSON.stringify({
                     marca: marca,
                     modelo: modelo,
                     ultimoValorConocidoKm: ultimos_Km, 
                     estado_vehiculo: estado_Vehiculo,
-                }),
-                {
-                    headers: {
-                        'Authorization': `Bearer ${sessionStorage.Token}`,
-                        'Content-Type': 'application/json'
-                    },
-                    withCredentials: true
-                }
+                })
             );
             navigate('/home'); 
         } catch (err: any) {

@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState, FormEvent } from 'react';
 import { Link } from 'react-router-dom';
-import axios from '../api/axios';
+import apiClient from '../api/apiService';
 
 const USER_REGEX = /^[a-zA-Z][a-zA-Z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,24}$/;
@@ -51,9 +51,8 @@ const Registro: React.FC = () => {
       return;
     }
     try {
-      const response = await axios.post(REGISTER_URL, 
-        JSON.stringify({ name: user, email, password: pwd, usuarioRoles: [{ rol: { id: 'dc89dad9-931d-11ef-acf3-088fc37c8150' } }] }),
-        { headers: { 'Content-Type': 'application/json' }, withCredentials: true }
+      const response = await apiClient.post(REGISTER_URL, 
+        JSON.stringify({ name: user, email, password: pwd, usuarioRoles: [{ rol: { id: '1ff9c3be-97d5-11ef-9fa8-00e04c694da8' } }] }),
       );
       console.log("Registro exitoso:", response.data);
       setSuccess(true);

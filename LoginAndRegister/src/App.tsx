@@ -18,9 +18,9 @@ function App() {
           <Route path="/" element={<Login />} /> 
 
           <Route element={<RutaPrivada roles={['ADMIN']} />}>
-            <Route path="/vehiculo" element={<AgregarVehiculo />} />
-            <Route path="/vehiculo/:patente" element={<EditarVehiculo />} />
-            <Route path="/vehiculo/:patente" element={<EliminarVehiculo />} />
+            <Route path="/crearVehiculo" element={<AgregarVehiculo />} />
+            <Route path="/editarVehiculo/:patente" element={<EditarVehiculo />} />
+            <Route path="/eliminarVehiculo/:patente" element={<EliminarVehiculo />} />
           </Route>
 
           <Route element={<RutaPrivada />}>

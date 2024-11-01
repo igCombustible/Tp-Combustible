@@ -19,9 +19,10 @@
   
   /* Encabezado */
   table thead th {
-    background-color: #4CAF50; /* Color de fondo del encabezado */
+    background-color: black;
     color: white;
     padding: 12px 15px;
+    width: 20%;
     border-bottom: 2px solid #ddd;
     font-weight: bold;
   }
@@ -43,26 +44,52 @@
   table tbody td {
     padding: 10px 15px;
   }
+
+  .header-container {
+    display: flex; 
+    align-items: center; 
+    margin: 0px 40px;
+}
 .botones-accion {
   display: flex;
   flex-direction: row;
-  gap: 20px;
   align-items: center;
   justify-content: center;
 }
-.edit-button, .delete-button {
-  padding: 4px 8px;
+.edit-button, .delete-button, .create-button, .info-button {
+  padding:5px; 
+  color: white;
   border: none;
-  border-radius: 7px;
+  border-radius: 4px;
   cursor: pointer;
-  font-size: 18px;
-  transition: background-color 0.3s; 
-  min-width: 80px;
+  transition: background-color 0.3s;
+  font-size: 14px;
+  width: 100px;
+  margin: 20px
 }
 .delete-button {
   background-color: #f44336; 
-  color: white;
 }
 .delete-button:hover {
   background-color: #d32f2f; 
+}
+
+.edit-button {
+  background-color: blue;
+}
+.edit-button:hover {
+  background-color: blue; 
+}
+.create-button {
+  padding: 5px 10px;
+  background-color: #28a745;
+  width: 100px;
+  height: 50px;
+  margin-left: auto;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-size: 18px;
 }

@@ -1,4 +1,4 @@
-import axios from '../api/axios';
+import apiClient from '../api/apiService';
 import React, { useContext, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import AuthContext from '../context/AuthProvider';
@@ -19,11 +19,7 @@ export const EliminarVehiculo = () => {
 
     const handleDelete = async () => {
         try {
-            await axios.delete(ELIMINAR_VEHICULO, {
-                headers: {
-                    'Authorization': `Bearer ${sessionStorage.Token}`
-                }
-            });
+            await apiClient.delete(ELIMINAR_VEHICULO);
             navigate('/Home');
         } catch (err: any) {
             if (!err?.response) {
