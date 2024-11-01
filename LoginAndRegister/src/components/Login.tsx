@@ -33,10 +33,6 @@ export const Login = () => {
     setErrMsg('');
   }, [user,pwd])
 
-  useEffect(() => {
-    console.log("Auth Context Updated: ", auth);          {/* lo paso fede */}
-  }, [auth]);
-
 
   useEffect(() => {
     if (sucess) {
@@ -55,12 +51,11 @@ export const Login = () => {
           withCredentials: true
 
         }
-        );
-        console.log(JSON.stringify(response?.data));              {/* imprime el token y la lista de roles en la consola */}
+        );  
         const accessToken = response?.data?.token;
-        console.log(accessToken);
         const roles = response?.data?.roles;
         sessionStorage.setItem('Token', accessToken);
+        sessionStorage.setItem('Rol', JSON.stringify(roles));
         setAuth({user, pwd, roles, accessToken});
       setUser('');
       setPwd('');
@@ -118,6 +113,7 @@ export const Login = () => {
           <button id="botonIngreso"  type="submit">Ingresar</button>
         </form>
         <p>¿No tienes una cuenta? <Link to="/registro">Regístrate aquí</Link></p>
+        <p>¿No recuerdas la contraseña? <Link to="/">Cambiar contraseña</Link></p>        {/* falta forntend y backend */}
       </div>
 
       )

@@ -2,7 +2,7 @@ import axios from '../api/axios';
 import React, { useContext, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import AuthContext from '../context/AuthProvider';
-import Nav from './Navbar';
+import {Nav} from './Navbar';
 
 export const EliminarVehiculo = () => {
     const authContext = useContext(AuthContext);

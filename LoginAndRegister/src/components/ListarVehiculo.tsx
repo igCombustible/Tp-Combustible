@@ -44,12 +44,13 @@ export const ListarVehiculo = () => {
     }, []);
 
     const handleEdit = (patente: string) => {
-        navigate(`/vehiculo/editarVehiculo/${patente}`);
+        navigate(`/vehiculo/${patente}`);
     };
     const handleDelete = (patente: string) => {
-        navigate(`/vehiculo/eliminarVehiculo/${patente}`);
+        navigate(`/vehiculo/${patente}`);
     };
 
+    const roles = JSON.parse(sessionStorage.getItem('Rol') || '[]');
 
     return (
         <>
@@ -64,7 +65,7 @@ export const ListarVehiculo = () => {
                             <th>Marca</th>
                             <th>Modelo</th>
                             <th>Ultimo kilometraje</th>
-                            <th>Acciones</th>
+                            {roles.includes('ADMIN') && <th>Acciones</th>}
                         </tr>
                     </thead>
                     <tbody>
@@ -74,12 +75,14 @@ export const ListarVehiculo = () => {
                                 <td>{vehiculo.marca}</td>
                                 <td>{vehiculo.modelo}</td>
                                 <td>{vehiculo.ultimoValorConocidoKm}</td>
-                                <td>
-                                    <div className="botones-accion">
-                                        <button className="edit-button" onClick={() => handleEdit(vehiculo.patente)}>Editar</button>
-                                        <button className="delete-button" onClick={() => handleDelete(vehiculo.patente)}>Eliminar</button>
-                                    </div>
-                                </td>
+                                {roles.includes('ADMIN') && (
+                                    <td>
+                                        <div className="botones-accion">
+                                            <button className="edit-button" onClick={() => handleEdit(vehiculo.patente)}>Editar</button>
+                                            <button className="delete-button" onClick={() => handleDelete(vehiculo.patente)}>Eliminar</button>
+                                        </div>
+                                    </td>
+                                )}
                             </tr>
                         ))}
                     </tbody>
