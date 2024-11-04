@@ -1,12 +1,14 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { Login } from './components/Login';
-import Registro from './components/Registro';
-import { Home } from './components/Home';
-import { AgregarVehiculo } from './components/AgregarVehiculo';
-import { EditarVehiculo } from './components/EditarVehiculo';
-import { EliminarVehiculo } from './components/EliminarVehiculo';
+import { Login } from './components/RegistroYLogin/Login';
+import Registro from './components/RegistroYLogin/Registro';
+import { ListaTicketsALaEspera } from './components/Tickets/ListaTicketsALaEspera';
+import { AgregarVehiculo } from './components/vehiculo/AgregarVehiculo';
+import { EditarVehiculo } from './components/vehiculo/EditarVehiculo';
+import { EliminarVehiculo } from './components/vehiculo/EliminarVehiculo';
 import { RutaPrivada } from './components/RutaPrivada/PrivateRoute';
+import { Home } from './components/Home';
+
 
 function App() {
   return (
@@ -21,6 +23,8 @@ function App() {
             <Route path="/crearVehiculo" element={<AgregarVehiculo />} />
             <Route path="/editarVehiculo/:patente" element={<EditarVehiculo />} />
             <Route path="/eliminarVehiculo/:patente" element={<EliminarVehiculo />} />
+            <Route path="/ticketsEsperando" element={<ListaTicketsALaEspera />} /> 
+          {/* <Route path="/confirmarTicket/:id" element={<ConfirmarTickets />} />  */}
           </Route>
 
           <Route element={<RutaPrivada />}>

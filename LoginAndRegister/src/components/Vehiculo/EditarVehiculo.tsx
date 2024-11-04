@@ -1,8 +1,8 @@
 import React, { FormEvent, useContext, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import AuthContext from '../context/AuthProvider';
-import {Nav} from './Navbar';
-import apiClient from '../api/apiService';
+import AuthContext from '../../context/AuthProvider';
+import {Nav} from '../Navbar';
+import apiClient from '../../api/apiService';
 
 export const EditarVehiculo = () => {
     const authContext = useContext(AuthContext);

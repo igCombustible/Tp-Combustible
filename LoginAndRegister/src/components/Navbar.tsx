@@ -34,7 +34,7 @@ export const Nav = () => {
                 Operador
               </a>)}
               <ul className="dropdown-menu">
-                <li><a className="dropdown-item" href="#">Confirmar tickets</a></li>
+                <li><Link className="dropdown-item" to="/ticketsEsperando">Confirmar tickets</Link></li>
               </ul>
             </li>
           </ul>

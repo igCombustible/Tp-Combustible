@@ -1,17 +1,11 @@
 import { useContext, useEffect, useState } from "react";
 import React from "react";
-import AuthContext from "../context/AuthProvider";
-import apiClient  from '../api/apiService'
-import "../assets/css/ListarVehiculo.css"
-import { Navigate, useNavigate } from "react-router-dom";
+import AuthContext from "../../context/AuthProvider";
+import apiClient  from '../../api/apiService'
+import "../../assets/css/ListarVehiculo.css"
+import "./Vehiculo"
 
-interface Vehiculo {
-    marca: string;
-    modelo: string;
-    patente: string;
-    ultimoValorConocidoKm: number;
-    estado_vehiculo: boolean;
-  }
+import { Navigate, useNavigate } from "react-router-dom";
 
 export const ListarVehiculo = () => {
     
@@ -24,7 +18,7 @@ export const ListarVehiculo = () => {
         throw new Error('asdasd');
     }
     
-    const {auth,setAuth} = authContext;
+    
     const [error, setError] = useState<string>('')
     
     useEffect(() => {
@@ -58,7 +52,7 @@ export const ListarVehiculo = () => {
 
     return (
         <>
-        <div>
+        <div className="titulo-y-tabla">
             <div className="header-container">
                 <h1>Lista de Vehículos</h1>
                 <button className="create-button" onClick={() => handleCreate()}>Agregar</button>
@@ -94,7 +88,7 @@ export const ListarVehiculo = () => {
                         ))}
                     </tbody>
                 </table>
-                </div>
+            </div>
                     
         </div>
         </>

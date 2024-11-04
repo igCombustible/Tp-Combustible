@@ -17,7 +17,7 @@ body {
     z-index: 1000; /* Asegura que esté por encima de otros elementos */
 }
 .navbar a {
-    color: black;
+    color: rgb(255, 255, 255);
     text-decoration: none;
     padding: 15px;
 }
@@ -40,7 +40,7 @@ body {
     padding: 20px; 
 }
 .bg-body-tertiary {
-    background-color: rgb(13, 110, 253) !important; 
+    background-color: rgb(0, 0, 0) !important; 
 }
 /* Contenedor para el checkbox y su etiqueta */
 .checkbox-container {
@@ -55,10 +55,3 @@ body {
     color: #333;
 }
 
-input[type="checkbox"] {
-    width: 20px; /* Ajuste de tamaño para el checkbox */
-    height: 20px;
-    cursor: pointer;
-    accent-color: rgb(13, 110, 253); /* Color de marca para checkbox en navegadores que lo soporten */
-    margin: 0; /* Eliminado el margen para simplificar */
-}

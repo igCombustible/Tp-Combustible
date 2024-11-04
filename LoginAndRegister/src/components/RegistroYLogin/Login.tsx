@@ -1,8 +1,7 @@
 import React, {useRef, useEffect, useState, useContext} from 'react';
-import AuthContext from '../context/AuthProvider.tsx';
+import AuthContext from '../../context/AuthProvider.tsx';
 import { Link ,  useNavigate } from 'react-router-dom';
-import axios from '../api/axios';
-import { AuthStatus } from '../context/AuthStatus.tsx';
+import axios from '../../api/axios.tsx';
 
 
 const LOGIN_URL = '/usuario/generateToken';

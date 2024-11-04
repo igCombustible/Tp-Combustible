@@ -1,9 +1,9 @@
-import axios from '../api/axios';
+import axios from '../../api/axios';
 import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import AuthContext from '../context/AuthProvider';
-import {Nav} from './Navbar';
-import apiClient from '../api/apiService';
+import AuthContext from '../../context/AuthProvider';
+import {Nav} from '../Navbar';
+import apiClient from '../../api/apiService';
 
 
 export const AgregarVehiculo = () => {
