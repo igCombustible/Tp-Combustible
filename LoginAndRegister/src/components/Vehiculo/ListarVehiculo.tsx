@@ -1,3 +1,4 @@
+
 import { useContext, useEffect, useState } from "react";
 import React from "react";
 import apiClient  from '../../api/apiService'
@@ -10,6 +11,7 @@ export const ListarVehiculo = () => {
     
     const OBTENERVEHICULOS = '/vehiculo';
     const [vehiculos, setVehiculos] = useState<Vehiculo[]>([]);
+    const [searchPatente, setSearchPatente] = useState<string>(''); // Estado para la patente de búsqueda
     const navigate = useNavigate(); 
     
     
@@ -43,6 +45,12 @@ export const ListarVehiculo = () => {
     };
 
     const roles = JSON.parse(sessionStorage.getItem('Rol') || '[]');
+    
+    const filteredVehiculos = vehiculos.filter(vehiculo =>
+        vehiculo.patente.toLowerCase().includes(searchPatente.toLowerCase())
+    );
+
+
 
     return (
         <>
@@ -51,6 +59,13 @@ export const ListarVehiculo = () => {
                 <h1>Lista de Vehículos</h1>
                 <button className="create-button" onClick={() => handleCreate()}>Agregar</button>
             </div>
+            <input
+                    type="text"
+                    placeholder="Buscar por patente..."
+                    value={searchPatente}
+                    onChange={(e) => setSearchPatente(e.target.value)}
+                    className="search-input" 
+                />
             
             {error && <p>{error}</p>}
             <div className="table-container">
@@ -64,7 +79,7 @@ export const ListarVehiculo = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {vehiculos.map((vehiculo) => (
+                        {filteredVehiculos.map((vehiculo) => (
                             <tr key={vehiculo.patente}>
                                 <td>{vehiculo.patente}</td>
                                 <td>{vehiculo.marca}</td>
@@ -88,4 +103,3 @@ export const ListarVehiculo = () => {
         </>
     );
 };
-

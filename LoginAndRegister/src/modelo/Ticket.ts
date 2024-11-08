@@ -10,3 +10,4 @@ export type Ticket = {
     vehiculo: Vehiculo;
     estado: EstadoDelTicket;
 }
+

@@ -1,0 +1,118 @@
+/* Asegura que el contenedor ocupe todo el ancho de la página */
+.table-container {
+  width: 100vw;
+  overflow-x: auto; /* Permite desplazamiento horizontal si el contenido es más ancho que la pantalla */
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+/* Estilos generales de la tabla */
+table {
+  width: 100%;
+  max-width: 100%;
+  border-collapse: collapse;
+  font-family: Arial, sans-serif;
+  margin: 20px 0;
+  font-size: 16px;
+  text-align: left;
+}
+
+/* Encabezado */
+table thead th {
+  background-color: black;
+  color: white;
+  padding: 12px 15px;
+  width: 20%;
+  border-bottom: 2px solid #ddd;
+  font-weight: bold;
+}
+
+/* Filas */
+table tbody tr {
+  border-bottom: 1px solid #ddd;
+}
+
+table tbody tr:nth-child(even) {
+  background-color: #f2f2f2; /* Color alterno para las filas */
+}
+
+table tbody tr:hover {
+  background-color: #ddd; /* Color al pasar el mouse */
+}
+
+/* Celdas del cuerpo */
+table tbody td {
+  padding: 10px 15px;
+}
+
+.header-container {
+  display: flex; 
+  align-items: center; 
+  margin: 20px; /* Cambia a 20px para un mejor espaciado */
+}
+
+/* Estilo para el campo de búsqueda */
+.search-container {
+  display: flex;
+  align-items: center;
+  margin-right: auto; /* Para que se mueva a la izquierda */
+}
+
+.search-input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  width: 200px; /* Ajusta el ancho según sea necesario */
+  margin-right: 10px; /* Espacio entre el input y el botón */
+}
+
+/* Botones de acción */
+.botones-accion {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.edit-button, .delete-button, .create-button, .info-button {
+  padding: 5px; 
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-size: 14px;
+  width: 100px;
+  margin: 5px; /* Reduce el margen para que no estén tan separados */
+}
+
+.delete-button {
+  background-color: #f44336; 
+}
+
+.delete-button:hover {
+  background-color: #d32f2f; 
+}
+
+.edit-button {
+  background-color: blue;
+}
+
+.edit-button:hover {
+  background-color: #003d99; /* Color más oscuro al pasar el mouse */
+}
+
+.create-button {
+  padding: 5px 10px;
+  background-color: #28a745;
+  width: 100px;
+  height: 50px;
+  margin-left: auto;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-size: 18px;
+}

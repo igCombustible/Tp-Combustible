@@ -1,12 +1,11 @@
 import React, { useRef, useEffect, useState, FormEvent } from 'react';
 import { Link } from 'react-router-dom';
-import apiClient from '../../api/apiService';
+import apiClient from '../api/apiService';
 
 const USER_REGEX = /^[a-zA-Z][a-zA-Z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,24}$/;
 const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@(gmail|hotmail|yahoo)\.com$/;
 const REGISTER_URL = '/usuario/registrarse';
-const ROL__USUARIO = '/rol/USER';
 
 const Registro: React.FC = () => {
   const userRef = useRef<HTMLInputElement>(null);
@@ -24,8 +23,6 @@ const Registro: React.FC = () => {
 
   const [errMsg, setErrMsg] = useState<string>('');
   const [success, setSuccess] = useState<boolean>(false);
-
-  const [idRol, setIdRol] = useState<string>('');
 
   useEffect(() => {
     userRef.current?.focus();
@@ -47,22 +44,6 @@ const Registro: React.FC = () => {
     setErrMsg('');
   }, [user, email, pwd]);
 
-  useEffect(() => {
-    buscarIdRol();
-  }, []);
-
-
-  const buscarIdRol = async () => {
-    try {
-      const response = await apiClient.get(ROL__USUARIO);
-      setIdRol(response.data); 
-      console.log(response.data);
-              
-    } catch (error) {
-      console.error("Error al obtener el ID del rol:", error);
-    }
-  };
-
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     if (!validName || !validPwd || !validEmail) {
@@ -70,9 +51,8 @@ const Registro: React.FC = () => {
       return;
     }
     try {
-
       const response = await apiClient.post(REGISTER_URL, 
-        JSON.stringify({ name: user, email, password: pwd, usuarioRoles: [{ rol: { id:  idRol} }] }),
+        JSON.stringify({ name: user, email, password: pwd, usuarioRoles: [{ rol: { id: '30a2c8d8-9899-11ef-b1dc-3c528210787f' } }] }),
       );
       console.log("Registro exitoso:", response.data);
       setSuccess(true);
@@ -150,4 +130,4 @@ const Registro: React.FC = () => {
   );
 }
 
-export default Registro;
+export default Registro; 

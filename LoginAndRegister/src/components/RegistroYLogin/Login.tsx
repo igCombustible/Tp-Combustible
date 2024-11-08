@@ -53,6 +53,7 @@ export const Login = () => {
         );  
         const accessToken = response?.data?.token;
         const roles = response?.data?.roles;
+        const userId = response?.data.roles;
         sessionStorage.setItem('Token', accessToken);
         sessionStorage.setItem('Rol', JSON.stringify(roles));
         setAuth({user, pwd, roles, accessToken});

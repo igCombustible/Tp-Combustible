@@ -2,6 +2,9 @@ import React, { createContext, useState, ReactNode } from "react";
 
 interface AuthContextType {
   auth: {
+    // name? : string;
+    // email? :string;
+    // userId?: string;
     user?: string;
     pwd?: string;
     roles?: string[];
@@ -9,7 +12,7 @@ interface AuthContextType {
   };
   setAuth: (auth: AuthContextType['auth']) => void;
 }
-
+//
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider = ({children}: {children: ReactNode}) => {

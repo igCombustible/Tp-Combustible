@@ -1,3 +1,4 @@
-export type EstadoDelTicket = {
-    estado: string;
+export enum EstadoDelTicket {
+    APROBADO = 'APROBADO',
+    RECHAZADO = 'RECHAZADO',
 }
