@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Vehiculo } from '../../components/Vehiculo/Vehiculo';
+import { Vehiculo } from "../../modelo/Vehiculo";
 import { VehiculoSelect } from '../Vehiculo/VehiculoSelect';
 
 interface TicketFormProps {

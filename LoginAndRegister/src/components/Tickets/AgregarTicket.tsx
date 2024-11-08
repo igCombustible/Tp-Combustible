@@ -2,11 +2,11 @@ import React, { useContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AuthContext from '../../context/AuthProvider';
 import apiClient from '../../api/apiService';
-import { Nav } from '../Navbar';
+import { Nav } from "../NavBar/Navbar";
 import { VehiculoSelect } from '../Vehiculo/VehiculoSelect';
 import { TicketForm } from './TicketForm';
-import { Vehiculo } from '../../components/Vehiculo/Vehiculo';
-import { EstadoDelTicket } from './EstadoTicket';
+import { Vehiculo } from "../../modelo/Vehiculo";
+import { EstadoDelTicket } from '../../modelo/EstadoTicket';
 
 const AGREGAR_TICKET = '/ticket';
 

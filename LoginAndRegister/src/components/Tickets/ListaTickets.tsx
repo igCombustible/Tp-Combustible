@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import apiClient from "../../api/apiService";
-import { Nav } from "../Navbar";
+import { Nav } from "../NavBar/Navbar";
 
 
 interface Ticket {
