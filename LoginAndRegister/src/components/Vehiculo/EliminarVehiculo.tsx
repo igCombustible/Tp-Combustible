@@ -1,20 +1,13 @@
 import apiClient from '../../api/apiService';
 import React, { useContext, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import AuthContext from '../../context/AuthProvider';
-import {Nav} from '../Navbar';
+import {Nav} from '../NavBar/Navbar';
 
 export const EliminarVehiculo = () => {
-    const authContext = useContext(AuthContext);
     const { patente } = useParams<{ patente: string }>(); 
     const [errMsg, setErrMsg] = useState<string>('');
     const navigate = useNavigate();
 
-    if (!authContext) {
-        throw new Error('No se encontró el contexto de autenticación');
-    }
-
-    const { auth } = authContext;
     const ELIMINAR_VEHICULO = `/vehiculo/${patente}`; 
 
     const handleDelete = async () => {

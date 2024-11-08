@@ -11,12 +11,12 @@ apiClient.interceptors.request.use(
   (config) => {
     // Obtén el token de autorización de donde lo estés almacenando (localStorage, context, etc.)
     const token = sessionStorage.getItem("Token"); // Cambia esto según cómo almacenes el token
-    console.log("Interceptor " + token);
+    // console.log("Interceptor " + token);
     if (token) {
       // Si hay un token, agrégalo a los encabezados de la solicitud
       config.headers.Authorization = `Bearer ${token}`;
-      config.headers["Content-Type"] = "application/json";
     }
+    config.headers["Content-Type"] = "application/json";
     return config;
   },
   (error) => {

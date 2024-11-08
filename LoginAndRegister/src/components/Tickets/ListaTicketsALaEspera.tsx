@@ -1,37 +1,44 @@
-import React from "react";
-import { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import AuthContext from "../../context/AuthProvider";
-import { useNavigate } from "react-router-dom";
-import { Nav } from "../Navbar.tsx";
-import apiClient from "../../api/apiService.tsx";
-import "../../assets/css/ListarVehiculo.css"
-import "./Ticket"
+import apiClient from "../../api/apiService";
+import "../Vehiculo/ListarVehiculo.css"
+import { Ticket } from "../../modelo/Ticket"
+import { Nav } from "../NavBar/Navbar";
 
 export const ListaTicketsALaEspera = () => {
     const OBTENERTICKETS = '/ticket';
-    const authContext = useContext(AuthContext);
     const [tickets, setTickets] = useState<Ticket[]>([]);
     const [error, setError] = useState<string>('');
-    const navigate = useNavigate();
 
-    if (!authContext) {
-        throw new Error('El contexto de autenticación no está disponible.');
-    }
-
-    useEffect(() => {
-        const obtenerVehiculos = async () => {
+    const obtenerTickets = async () => {
         try {
             const response = await apiClient.get(OBTENERTICKETS);
             setTickets(response.data);
-        } catch (err: any) {
+        } catch (err) {
             setError('Error al obtener los tickets');
-        } 
-      };
-            obtenerVehiculos(); 
+        }
+    };
+
+    useEffect(() => {
+        obtenerTickets();
     }, []);
 
-    const handleAceptar = (id: string) => {
-        navigate(`/aceptarTicket/${id}`);
+    const handleAceptar = async (id: string) => {
+        try {
+            const responseAceptar = await apiClient.put(`/ticket/${id}`);
+            obtenerTickets();
+        } catch (error) {
+            console.error("Error al confirmar el ticket", error);
+        }
+    };
+
+    const handleRechazar = async (id: string) => {
+        try {
+            const responseAceptar = await apiClient.delete(`/ticket/${id}`);
+            obtenerTickets();
+        } catch (error) {
+            console.error("Error al confirmar el ticket", error);
+        }
     };
 
     return (
@@ -39,14 +46,12 @@ export const ListaTicketsALaEspera = () => {
             <div>
                 <Nav />
             </div>
+            <div className="contenedor">
+                <div className="header-container">
+                    <h1>Tickets por aceptar</h1>
+                    {error && <p className="alert alert-danger">{error}</p>}
+                </div>
 
-            {/* busqueda de tickets */}
-
-            <div className="header-container">
-                <h1>Tickets por aceptar</h1>
-                {error && <p>{error}</p>}
-            </div>
-            <div>
                 <div className="table-container">
                     <table>
                         <thead>
@@ -69,7 +74,8 @@ export const ListaTicketsALaEspera = () => {
                                     <td>{ticket.usuario.email}</td>
                                     <td>
                                         <div className="botones-accion">
-                                            <button className="edit-button" onClick={() => handleAceptar(ticket.id)}>Aceptar ticket</button>
+                                            <button className="aceptar-button" onClick={() => handleAceptar(ticket.id)}>Aceptar ticket</button>
+                                            <button className="rechazar-button" onClick={() => handleRechazar(ticket.id)}>rechazar ticket</button>
                                         </div>
                                     </td>
                                 </tr>

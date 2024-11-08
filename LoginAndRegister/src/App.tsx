@@ -3,11 +3,11 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Login } from './components/RegistroYLogin/Login';
 import Registro from './components/RegistroYLogin/Registro';
 import { ListaTicketsALaEspera } from './components/Tickets/ListaTicketsALaEspera';
-import { AgregarVehiculo } from './components/vehiculo/AgregarVehiculo';
-import { EditarVehiculo } from './components/vehiculo/EditarVehiculo';
-import { EliminarVehiculo } from './components/vehiculo/EliminarVehiculo';
+import { EditarVehiculo } from './components/Vehiculo/EditarVehiculo';
 import { RutaPrivada } from './components/RutaPrivada/PrivateRoute';
-import { Home } from './components/Home';
+import { Home } from './components/Home/Home';
+import { EliminarVehiculo } from './components/Vehiculo/EliminarVehiculo';
+import { AgregarVehiculo } from './components/Vehiculo/AgregarVehiculo';
 
 
 function App() {
@@ -24,7 +24,6 @@ function App() {
             <Route path="/editarVehiculo/:patente" element={<EditarVehiculo />} />
             <Route path="/eliminarVehiculo/:patente" element={<EliminarVehiculo />} />
             <Route path="/ticketsEsperando" element={<ListaTicketsALaEspera />} /> 
-          {/* <Route path="/confirmarTicket/:id" element={<ConfirmarTickets />} />  */}
           </Route>
 
           <Route element={<RutaPrivada />}>

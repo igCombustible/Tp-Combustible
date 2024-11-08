@@ -1,22 +1,16 @@
 import { useContext, useEffect, useState } from "react";
 import React from "react";
-import AuthContext from "../../context/AuthProvider";
 import apiClient  from '../../api/apiService'
-import "../../assets/css/ListarVehiculo.css"
-import "./Vehiculo"
+import { Vehiculo } from "../../modelo/Vehiculo"
+import "./ListarVehiculo.css"
 
 import { Navigate, useNavigate } from "react-router-dom";
 
 export const ListarVehiculo = () => {
     
     const OBTENERVEHICULOS = '/vehiculo';
-    const authContext = useContext(AuthContext);
     const [vehiculos, setVehiculos] = useState<Vehiculo[]>([]);
     const navigate = useNavigate(); 
-    
-    if (!authContext){
-        throw new Error('asdasd');
-    }
     
     
     const [error, setError] = useState<string>('')
@@ -52,7 +46,7 @@ export const ListarVehiculo = () => {
 
     return (
         <>
-        <div className="titulo-y-tabla">
+        <div className="contenedor">
             <div className="header-container">
                 <h1>Lista de Vehículos</h1>
                 <button className="create-button" onClick={() => handleCreate()}>Agregar</button>

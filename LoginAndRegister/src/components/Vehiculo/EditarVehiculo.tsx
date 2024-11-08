@@ -1,7 +1,7 @@
 import React, { FormEvent, useContext, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import AuthContext from '../../context/AuthProvider';
-import {Nav} from '../Navbar';
+import { Nav } from '../NavBar/Navbar';
 import apiClient from '../../api/apiService';
 
 export const EditarVehiculo = () => {
@@ -20,7 +20,6 @@ export const EditarVehiculo = () => {
     
     const { auth } = authContext;
     const EDITAR_VEHICULO = `/vehiculo/${patente}`; 
-    
     
     useEffect(() => {
         const buscarVehiculo = async () => {
@@ -105,13 +104,15 @@ export const EditarVehiculo = () => {
                             required
                         />
                     </div>
-                    <div className="checkbox-container">
+                    <div className="checkbox-container" style={{ display: 'flex', alignItems: 'center' }}>
                         <input
                             type="checkbox"
                             checked={estado_Vehiculo}
                             onChange={(e) => setestado_Vehiculo(e.target.checked)}
+                            id="estado_Vehiculo"
+                            style={{ width: '15px', marginRight: '5px', verticalAlign: 'center' }}
                         />
-                        <label className="checkbox-label">
+                        <label htmlFor="estado_Vehiculo" className="checkbox-label" style={{ verticalAlign: 'middle' }}>
                             El vehículo está {estado_Vehiculo ? "habilitado" : "inhabilitado"}
                         </label>
                     </div>

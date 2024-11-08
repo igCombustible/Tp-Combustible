@@ -1,3 +1,0 @@
-type EstadoDelTicket = {
-    estado: string;
-}

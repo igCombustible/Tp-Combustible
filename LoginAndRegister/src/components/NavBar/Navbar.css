@@ -1,0 +1,53 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.content {
+    margin-top: 60px; 
+    padding: 20px; 
+}
+
+.navbar a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    padding: 15px;
+}
+
+.navbar {
+    background-color: #333;
+    color: white;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed; 
+    top: 0;
+    left: 0; 
+    width: 100%; 
+    z-index: 1000; 
+}
+
+.navbar-nav .nav-link.active, 
+.navbar-nav .nav-link.show{
+    color: rgb(255, 255, 255);
+}
+
+.navbar .nav-link:hover,
+.navbar .navbar-brand{
+    color: rgb(255, 255, 255);
+}
+
+.navbar .dropdown-item{
+    color: black;
+}
+
+.navbar .dropdown-item:hover {
+    background-color: lightgray;
+}
+.bg-body-tertiary {
+    background-color: rgb(0, 0, 0) !important; 
+}
+
+

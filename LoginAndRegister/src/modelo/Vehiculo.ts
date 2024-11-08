@@ -1,4 +1,4 @@
-type Vehiculo = {
+export type Vehiculo = {
     marca: string;
     modelo: string;
     patente: string;
