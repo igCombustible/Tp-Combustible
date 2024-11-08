@@ -5,7 +5,7 @@ import apiClient  from '../../api/apiService'
 import "../../assets/css/ListarVehiculo.css"
 import "./Vehiculo"
 
-import { Navigate, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 
 export const ListarVehiculo = () => {
     
@@ -38,7 +38,7 @@ export const ListarVehiculo = () => {
     };
 
     const handleInfo = (patente: string) => {
-        
+        navigate(`/infoVehiculo/${patente}`);
     };
 
     const handleEdit = (patente: string) => {
@@ -55,7 +55,9 @@ export const ListarVehiculo = () => {
         <div className="titulo-y-tabla">
             <div className="header-container">
                 <h1>Lista de Vehículos</h1>
-                <button className="create-button" onClick={() => handleCreate()}>Agregar</button>
+                {roles.includes('ADMIN') && (
+                    <button className="create-button" onClick={() => handleCreate()}>Agregar</button>
+                )}
             </div>
             
             {error && <p>{error}</p>}
@@ -75,15 +77,19 @@ export const ListarVehiculo = () => {
                                 <td>{vehiculo.patente}</td>
                                 <td>{vehiculo.marca}</td>
                                 <td>{vehiculo.modelo}</td>
-                                {roles.includes('ADMIN') && (
-                                    <td>
-                                        <div className="botones-accion">
-                                            <button className="info-button" onClick={() => handleInfo(vehiculo.patente)}>Info</button>
-                                            <button className="edit-button" onClick={() => handleEdit(vehiculo.patente)}>Editar</button>
-                                            <button className="delete-button" onClick={() => handleDelete(vehiculo.patente)}>Eliminar</button>
-                                        </div>
-                                    </td>
-                                )}
+                                <td>
+    <div className="botones-accion">
+        {roles.includes('USER') && (
+            <Link to={`/infoVehiculo/${vehiculo.patente}`}><button>Ver Info</button></Link>
+        )}
+        {roles.includes('ADMIN') && (
+            <>
+                <button className="edit-button" onClick={() => handleEdit(vehiculo.patente)}>Editar</button>
+                <button className="delete-button" onClick={() => handleDelete(vehiculo.patente)}>Eliminar</button>
+            </>
+        )}
+    </div>
+</td>
                             </tr>
                         ))}
                     </tbody>

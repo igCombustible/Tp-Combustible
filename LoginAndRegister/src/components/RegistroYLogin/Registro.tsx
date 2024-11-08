@@ -52,7 +52,7 @@ const Registro: React.FC = () => {
     }
     try {
       const response = await apiClient.post(REGISTER_URL, 
-        JSON.stringify({ name: user, email, password: pwd, usuarioRoles: [{ rol: { id: '1ff9c3be-97d5-11ef-9fa8-00e04c694da8' } }] }),
+        JSON.stringify({ name: user, email, password: pwd, usuarioRoles: [{ rol: { id: '7e636ab8-9b02-11ef-9fa8-00e04c694da8' } }] }),
       );
       console.log("Registro exitoso:", response.data);
       setSuccess(true);
