@@ -91,7 +91,9 @@ export const InfoVehiculo = () => {
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                {tickets.map((ticket) => (
+                                                {tickets
+                                                    .sort((a, b) => new Date(a.fechaDeSolicitud).getTime() - new Date(b.fechaDeSolicitud).getTime())
+                                                    .map((ticket) => (
                                                     <tr key={ticket.id}>
                                                         <td>{new Date(ticket.fechaDeSolicitud).toLocaleDateString()}</td>
                                                         <td>{ticket.cantidadDeSolicitud}</td>
