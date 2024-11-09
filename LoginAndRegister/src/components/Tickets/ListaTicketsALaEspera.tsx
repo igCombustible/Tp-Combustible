@@ -6,7 +6,8 @@ import { Ticket } from "../../modelo/Ticket"
 import { Nav } from "../NavBar/Navbar";
 
 export const ListaTicketsALaEspera = () => {
-    const OBTENERTICKETS = '/ticket';
+    const OBTENERTICKETS = '/ticket/espera';
+    const authContext = useContext(AuthContext);
     const [tickets, setTickets] = useState<Ticket[]>([]);
     const [error, setError] = useState<string>('');
 
