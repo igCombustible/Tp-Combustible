@@ -66,8 +66,9 @@ export const AgregarTicket = () => {
             <Nav />
             {suceso ? (
                 <div>
-                    <p>El ticket se ha creado exitosamente.</p>
-                    <button onClick={() => navigate('/listaTickets')}>Ver lista de tickets</button>
+                    <p>El ticket se ha sido cargado exitosamente.</p>
+                    <p>Debe esperar a confirmacion del operador</p>
+                    <button onClick={() => navigate('/home')}>Home</button>
                 </div>
             ) : (
                 <TicketForm

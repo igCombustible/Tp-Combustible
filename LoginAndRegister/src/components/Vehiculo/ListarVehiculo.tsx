@@ -1,18 +1,17 @@
 
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import React from "react";
 import apiClient  from '../../api/apiService'
 import { Vehiculo } from "../../modelo/Vehiculo"
 import "./ListarVehiculo.css"
 
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link} from "react-router-dom";
 
 export const ListarVehiculo = () => {
     
     const OBTENERVEHICULOS = '/vehiculo';
     const [vehiculos, setVehiculos] = useState<Vehiculo[]>([]);
     const [searchPatente, setSearchPatente] = useState<string>(''); // Estado para la patente de búsqueda
-    const navigate = useNavigate(); 
     
     
     const [error, setError] = useState<string>('')
@@ -29,20 +28,6 @@ export const ListarVehiculo = () => {
             obtenerVehiculos(); 
     }, []);
 
-    const handleCreate = () => {
-        navigate(`/crearVehiculo`);
-    };
-
-    const handleInfo = (patente: string) => {
-        navigate(`/infoVehiculo/${patente}`);
-    };
-
-    const handleEdit = (patente: string) => {
-        navigate(`/editarVehiculo/${patente}`);
-    };
-    const handleDelete = (patente: string) => {
-        navigate(`/eliminarVehiculo/${patente}`);
-    };
 
     const roles = JSON.parse(sessionStorage.getItem('Rol') || '[]');
     
@@ -58,7 +43,10 @@ export const ListarVehiculo = () => {
             <div className="header-container">
                 <h1>Lista de Vehículos</h1>
                 {roles.includes('ADMIN') && (
-                    <button className="create-button" onClick={() => handleCreate()}>Agregar</button>
+                    <Link to={`/crearVehiculo`}>
+                        <button className="create-button" 
+                                >Agregar</button>
+                        </Link>
                 )}
             </div>
             <input
@@ -77,7 +65,7 @@ export const ListarVehiculo = () => {
                             <th>Patente</th>
                             <th>Marca</th>
                             <th>Modelo</th>
-                            {roles.includes('ADMIN') && <th>Acciones</th>}
+                            <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -89,12 +77,37 @@ export const ListarVehiculo = () => {
                                 <td>
     <div className="botones-accion">
         {roles.includes('USER') && (
-            <Link to={`/infoVehiculo/${vehiculo.patente}`}><button>Ver Info</button></Link>
+            <>
+            <Link to={`/agregarTicket`}>
+                <button
+                    className="create-ticket"
+                    >Agregar ticket
+                </button>
+            </Link>
+            <Link to={`/infoVehiculo/${vehiculo.patente}`}>
+                <button
+                    className="info-vehiculo">
+                        Ver Info
+                </button>
+            </Link>
+            </>
         )}
         {roles.includes('ADMIN') && (
             <>
-                <button className="edit-button" onClick={() => handleEdit(vehiculo.patente)}>Editar</button>
-                <button className="delete-button" onClick={() => handleDelete(vehiculo.patente)}>Eliminar</button>
+                <Link to={`/editarVehiculo/${vehiculo.patente}`}>
+                    <button className="edit-button" 
+                            >Editar
+                    </button>
+                </Link>
+                <Link to={`/eliminarVehiculo/${vehiculo.patente}`}>
+                    <button 
+                        className="delete-button" 
+                        >Eliminar</button>
+                </Link>
+                <Link to={`/infoVehiculo/${vehiculo.patente}`}>
+                    <button
+                        className="info-button">Ver Info</button>
+                </Link>
             </>
         )}
     </div>

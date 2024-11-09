@@ -75,7 +75,7 @@ table tbody td {
   justify-content: center;
 }
 
-.edit-button, .delete-button, .create-button, .info-button {
+.edit-button, .delete-button, .create-button, .info-button, .create-ticket {
   padding: 5px; 
   color: white;
   border: none;
@@ -115,4 +115,8 @@ table tbody td {
   cursor: pointer;
   transition: background-color 0.3s;
   font-size: 18px;
+}
+
+.create-ticket{
+  background-color: #28a745; 
 }

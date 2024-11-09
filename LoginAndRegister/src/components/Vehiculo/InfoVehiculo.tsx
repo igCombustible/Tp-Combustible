@@ -1,8 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
 import AuthContext from '../../context/AuthProvider';
 import apiClient from '../../api/apiService';
-import { Nav } from "../Navbar";
+import { Nav } from "../NavBar/Navbar";
 import { useParams } from 'react-router-dom';
+import {Vehiculo} from '../../modelo/Vehiculo'
+import {Ticket} from '../../modelo/Ticket'
+import '../../assets/css/InfoVehiculo.css'
+
 
 export const InfoVehiculo = () => {
     const authContext = useContext(AuthContext);
