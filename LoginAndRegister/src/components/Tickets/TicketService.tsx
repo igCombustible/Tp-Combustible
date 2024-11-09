@@ -1,5 +1,5 @@
 import apiClient from '../../api/apiService';
-import { Ticket } from '../Tickets/Ticket';
+import { Ticket } from '../../modelo/Ticket';
 
 const AGREGAR_TICKET_URL = '/ticket';
 
