@@ -22,7 +22,7 @@ export const Nav = () => {
                 Reportes
               </a>
               <ul className="dropdown-menu">
-                <li><a className="dropdown-item" href="#">Vehículos por consumo</a></li>
+                <li><Link className="nav-link active" aria-current="page" to="/vehiculos-por-consumo">Vehiculos por consumo</Link></li>
                 <li><a className="dropdown-item" href="#">Cantidad de km recorridos</a></li>
               </ul>
             </li>

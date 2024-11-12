@@ -48,7 +48,7 @@ export const AgregarTicket = () => {
                 ticket: {
                     cantidadDeSolicitud: cantidad, 
                     fechaDeSolicitud: new Date().toISOString(),
-                    estado: 'RECHAZADO'
+                    estado: 'ESPERANDO'
                 }
             });
             setSuceso(true);
