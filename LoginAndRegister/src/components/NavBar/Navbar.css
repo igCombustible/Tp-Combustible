@@ -15,6 +15,7 @@ body {
     padding: 15px;
 }
 
+
 .navbar {
     background-color: #333;
     color: white;
@@ -40,7 +41,7 @@ body {
 }
 
 .navbar .dropdown-item{
-    color: black;
+    background-color: black;
 }
 
 .navbar .dropdown-item:hover {

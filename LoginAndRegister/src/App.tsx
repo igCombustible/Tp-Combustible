@@ -11,6 +11,7 @@ import { RutaPrivada } from './components/RutaPrivada/PrivateRoute';
 import { Home } from './components/Home/Home';
 import { AgregarTicket } from './components/Tickets/AgregarTicket';
 import { ConsumoVehiculos } from './components/Reportes/ConsumoVehiculos';
+import { ConsumoPorKm } from './components/Reportes/ConsumoPorKm';
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
           <Route path="/infoVehiculo/:patente" element={<InfoVehiculo />} />
           <Route path="/agregarTicket" element={<AgregarTicket />} /> 
           <Route path="/vehiculos-por-consumo" element={<ConsumoVehiculos />} />
+          <Route path="/vehiculos-por-promedio-km" element={<ConsumoPorKm />} />
 
           <Route element={<RutaPrivada roles={['ADMIN']} />}>
             <Route path="/crearVehiculo" element={<AgregarVehiculo />} />
