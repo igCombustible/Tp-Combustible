@@ -39,23 +39,23 @@ export const ListarVehiculo = () => {
                         <Link to={`/crearVehiculo`}>
                             <button className="create-button">Agregar</button>
                         </Link>
-                    )}
+                    )} 
+                    <form className="barra-busqueda">
+                        <label htmlFor="search">Search</label>
+                        <input
+                        required
+                        pattern=".*\S.*"
+                        type="search"
+                        className="input"
+                        id="search"
+                        value={searchPatente}
+                        onChange={(e) => setSearchPatente(e.target.value)}
+                        />
+                        <span className="caret"></span>
+                    </form>
                 </div>
 
                 
-                <form>
-                    <label htmlFor="search">Search</label>
-                    <input
-                    required
-                    pattern=".*\S.*"
-                    type="search"
-                    className="input"
-                    id="search"
-                    value={searchPatente}
-                    onChange={(e) => setSearchPatente(e.target.value)}
-                    />
-                    <span className="caret"></span>
-                </form>
                 
 
                 {error && <p>{error}</p>}

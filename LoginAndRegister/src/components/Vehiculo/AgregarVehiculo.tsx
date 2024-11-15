@@ -58,7 +58,7 @@ export const AgregarVehiculo = () => {
       <h2>Agregar Vehiculo</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
-          <label htmlFor="marca" className="form-label">Marca:</label>
+          <p className="form-label">Marca:</p>
           <input
             type="text"
             className="form-control"
@@ -69,7 +69,7 @@ export const AgregarVehiculo = () => {
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="modelo" className="form-label">Modelo:</label>
+          <p className="form-label">Modelo:</p>
           <input
             type="text"
             className="form-control"
@@ -80,7 +80,7 @@ export const AgregarVehiculo = () => {
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="anio" className="form-label">Patente:</label>
+          <p className="form-label">Patente:</p>
           <input
             type="text"
             className="form-control"
