@@ -1,0 +1,20 @@
+.botones-accion {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.aceptar-button,
+.rechazar-button{
+    padding: 5px; 
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 14px;
+    width: 100px;
+    margin: 5px; /* Reduce el margen para que no estén tan separados */
+  }
+

@@ -5,7 +5,7 @@ import { Nav } from "../NavBar/Navbar";
 import { useParams } from 'react-router-dom';
 import {Vehiculo} from '../../modelo/Vehiculo'
 import {Ticket} from '../../modelo/Ticket'
-import '../../assets/css/InfoVehiculo.css'
+import './InfoVehiculo.css'
 
 
 export const InfoVehiculo = () => {
