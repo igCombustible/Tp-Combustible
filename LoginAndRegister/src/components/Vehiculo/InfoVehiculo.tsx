@@ -3,22 +3,20 @@ import AuthContext from '../../context/AuthProvider';
 import apiClient from '../../api/apiService';
 import { Nav } from "../NavBar/Navbar";
 import { useParams } from 'react-router-dom';
-import {Vehiculo} from '../../modelo/Vehiculo'
 import {Ticket} from '../../modelo/Ticket'
 import '../../assets/css/InfoVehiculo.css'
+import { ConsumoVehiculo } from '../../modelo/ConsumoVehiculo';
 
 
 export const InfoVehiculo = () => {
     const authContext = useContext(AuthContext);
     const { patente } = useParams<{ patente: string }>();
 
-    const BUSCARVEHICULO = `vehiculo/${patente}`;
+    const BUSCARVEHICULO = `vehiculo/consumo/${patente}`;
     const TICKETSVEHICULO = `ticket/infoTickets/${patente}`;
-    const LITROSCONSUMIDOS = `ticket/consumoTotalCombustible/${patente}`;
 
-    const [vehiculo, setVehiculo] = useState<Vehiculo | null>(null);
     const [tickets, setTickets] = useState<Ticket[] | null>(null);
-    const [consumo, setConsumo] = useState<number | null>(null);
+    const [consumo, setConsumo] = useState<ConsumoVehiculo>();
 
     const [errMsgVehiculo, setErrMsgVehiculo] = useState<string | null>(null);
     const [errMsgTicket, setErrMsgTicket] = useState<string | null>(null);
@@ -31,26 +29,16 @@ export const InfoVehiculo = () => {
 
     useEffect(() => {
         buscarVehiculo();
-        consumoDelVehiculo();
         ticketDelVehiculo();
     }, []);
 
     const buscarVehiculo = async () => {
         try {
             const response = await apiClient.get(BUSCARVEHICULO);
-            setVehiculo(response.data);
+            setConsumo(response.data);
         } catch (error) {
             setErrMsgVehiculo('No se pudo cargar los datos del vehículo');
         }
-    };
-
-    const consumoDelVehiculo = async () => {
-        try {
-            const response = await apiClient.get(LITROSCONSUMIDOS);
-            setConsumo(response.data);
-        } catch (error) {
-            setErrMsgTicket('Error al obtener el consumo de combustible');
-        } 
     };
 
     const ticketDelVehiculo = async () => {
@@ -70,15 +58,14 @@ export const InfoVehiculo = () => {
                 
                 {errMsgVehiculo && <p className="error-message">{errMsgVehiculo}</p>}
 
-                {vehiculo ? (
-                    <>
+                {consumo ? (
+                    <>  
                         <div className="vehiculo-caracteristicas">
-                            <p><strong>Patente:</strong> {vehiculo?.patente}</p>
-                            <p><strong>Marca:</strong> {vehiculo?.marca}</p>
-                            <p><strong>Modelo:</strong> {vehiculo?.modelo}</p>
-                            <p><strong>Último Kilometraje Conocido:</strong> {vehiculo?.ultimoValorConocidoKm} km</p>
-                            <p><strong>Estado del Vehículo:</strong> {vehiculo?.estado_vehiculo ? "Activo" : "Inactivo"}</p>
-                            <p><strong>Litros Consumidos:</strong> {consumo} L</p>
+                            <p><strong>Patente:</strong> {consumo.patente}</p>
+                            <p><strong>Marca:</strong> {consumo.marca}</p>
+                            <p><strong>Modelo:</strong> {consumo.modelo}</p>
+                            <p><strong>Último Kilometraje Conocido:</strong> {consumo.km}</p>
+                            <p><strong>Litros Consumidos:</strong> {consumo.consumo} L</p>
                         </div>
     
                         <div className="vehiculo-tickets">

@@ -1,14 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Vehiculo } from "../../modelo/Vehiculo";
+import { ConsumoVehiculo } from "../../modelo/ConsumoVehiculo";
 import apiClient from "../../api/apiService";
 import { Nav } from "../NavBar/Navbar";
 
 export const ConsumoVehiculos = () => {
-    
-    const [vehiculos, setVehiculos] = useState<Vehiculo[]>([]);
-    const [consumos, setConsumos] = useState<{ [patente: string]: number | null }>({});
+    const [consumos, setConsumos] = useState<ConsumoVehiculo[]>([]);
 
-    const BUSCARVEHICULO = '/vehiculo';
+    const CONSUMOS = '/vehiculo/consumos';
     
 
     const [errMsgVehiculo, setErrMsgVehiculo] = useState<string | null>(null);
@@ -16,34 +14,16 @@ export const ConsumoVehiculos = () => {
 
 
     useEffect(() => {
-        buscarVehiculos();
+        buscarConsumos();
     }, []);
 
-    useEffect(() => {
-        vehiculos.forEach(vehiculo => {
-            consumoDelVehiculo(vehiculo.patente);
-        });
-    }, [vehiculos]);
-
-    
-    const buscarVehiculos = async () => {
+    const buscarConsumos = async () => {
         try {
-            const response = await apiClient.get(BUSCARVEHICULO);
-            setVehiculos(response.data);
+            const response = await apiClient.get(CONSUMOS);
+            setConsumos(response.data);
         } catch (error) {
             setErrMsgVehiculo('No se pudo cargar los datos del vehículo');
         }
-    };
-
-    const consumoDelVehiculo = async (patente: string) => {
-        const LITROSCONSUMIDOS = `ticket/consumoTotalCombustible/${patente}`;
-        try {
-            const response = await apiClient.get(LITROSCONSUMIDOS);
-            setConsumos(actualizacionConsumos => ({ ...actualizacionConsumos, [patente]: response.data }));
-            return(response.data);
-        } catch (error) {
-            setErrMsgTicket('Error al obtener el consumo de combustible');
-        } 
     };
 
     return (
@@ -55,11 +35,11 @@ export const ConsumoVehiculos = () => {
                 {errMsgVehiculo && <p className="error-message">{errMsgVehiculo}</p>}
                 {errMsgTicket && <p className="error-message">{errMsgTicket}</p>}
     
-                {vehiculos ? (
+                {consumos ? (
                     <div className="vehiculo-tickets">
                         <h3>Consumo por Vehículo</h3>
                         <div className="table-container">
-                            <table>
+                            <table className="consumo-vehiculo">
                                 <thead>
                                     <tr>
                                         <th>Patente</th>
@@ -69,14 +49,14 @@ export const ConsumoVehiculos = () => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {[...vehiculos]
-                                            .sort((a, b) => (consumos[b.patente] || 0) - (consumos[a.patente] || 0))
-                                            .map((vehiculo) => (
-                                        <tr key={vehiculo.patente}>
-                                            <td>{vehiculo.patente}</td>
-                                            <td>{vehiculo.marca}</td>
-                                            <td>{vehiculo.modelo}</td> 
-                                            <td>{consumos[vehiculo.patente] ?? "Cargando..."}</td>
+                                {[...consumos]
+                                            .sort((a, b) => b.consumo - a.consumo)
+                                            .map((consumo) => (
+                                        <tr key={consumo.patente}>
+                                            <td>{consumo.patente}</td>
+                                            <td>{consumo.marca}</td>
+                                            <td>{consumo.modelo}</td>
+                                            <td>{consumo.consumo}</td> 
                                         </tr>
                                     ))}
                                 </tbody>
