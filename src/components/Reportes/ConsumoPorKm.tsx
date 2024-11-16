@@ -3,7 +3,6 @@ import apiClient from "../../api/apiService";
 import { PromedioConsumo } from "../../modelo/PromedioConsumo";
 import React from "react";
 import { Nav } from "../NavBar/Navbar";
-import "../../assets/css/ConsumoPorKm.css"
 
 export const ConsumoPorKm = () => {
     const [promedios, setPromedios] = useState<PromedioConsumo[]>([]);
