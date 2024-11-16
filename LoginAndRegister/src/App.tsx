@@ -10,9 +10,9 @@ import { InfoVehiculo } from './components/Vehiculo/InfoVehiculo';
 import { RutaPrivada } from './components/RutaPrivada/PrivateRoute';
 import { Home } from './components/Home/Home';
 import { AgregarTicket } from './components/Tickets/AgregarTicket';
+import { ObtenerUsuarios } from './components/Usuarios/ObtenerUsuarios';
 import { ConsumoVehiculos } from './components/Reportes/ConsumoVehiculos';
 import { ConsumoPorKm } from './components/Reportes/ConsumoPorKm';
-
 
 function App() {
   return (
@@ -26,13 +26,16 @@ function App() {
           <Route path="/agregarTicket" element={<AgregarTicket />} /> 
           <Route path="/vehiculos-por-consumo" element={<ConsumoVehiculos />} />
           <Route path="/vehiculos-por-promedio-km" element={<ConsumoPorKm />} />
+          <Route path="/usuarios" element={<ObtenerUsuarios  />} />
 
           <Route element={<RutaPrivada roles={['ADMIN']} />}>
             <Route path="/crearVehiculo" element={<AgregarVehiculo />} />
             <Route path="/editarVehiculo/:patente" element={<EditarVehiculo />} />
             <Route path="/eliminarVehiculo/:patente" element={<EliminarVehiculo />} />
+          </Route>
+          
+          <Route element={<RutaPrivada roles={['OPERADOR']} />}>
             <Route path="/ticketsEsperando" element={<ListaTicketsALaEspera />} />
-          {/* <Route path="/confirmarTicket/:id" element={<ConfirmarTickets />} />  */}
           </Route>
 
           <Route element={<RutaPrivada />}>

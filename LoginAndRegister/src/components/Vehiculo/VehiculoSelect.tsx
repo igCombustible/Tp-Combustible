@@ -1,5 +1,5 @@
 import React from 'react';
-import { Vehiculo } from '../Vehiculo/Vehiculo';
+import { Vehiculo } from '../../modelo/Vehiculo';
 
 interface VehiculoSelectProps {
     vehiculos: Vehiculo[];

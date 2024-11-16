@@ -4,7 +4,7 @@ import apiClient from '../../api/apiService';
 import { Nav } from "../NavBar/Navbar";
 import { useParams } from 'react-router-dom';
 import {Ticket} from '../../modelo/Ticket'
-import '../../assets/css/InfoVehiculo.css'
+import './InfoVehiculo.css'
 import { ConsumoVehiculo } from '../../modelo/ConsumoVehiculo';
 
 
