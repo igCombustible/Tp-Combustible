@@ -2,6 +2,7 @@ import React, {useRef, useEffect, useState, useContext} from 'react';
 import AuthContext from '../../context/AuthProvider.tsx';
 import { Link ,  useNavigate } from 'react-router-dom';
 import axios from '../../api/axios.tsx';
+import apiClient from '../../api/apiService.tsx';
 
 
 const LOGIN_URL = '/usuario/generateToken';
@@ -43,7 +44,7 @@ export const Login = () => {
     e.preventDefault();
     
     try{
-      const response = await axios.post(LOGIN_URL,
+      const response = await apiClient.post(LOGIN_URL,
         JSON.stringify({username: user, password: pwd}),
         {
           headers: {'Content-Type': 'application/json'},
