@@ -6,3 +6,81 @@
   font-family: 'Arial', sans-serif;
 }
 
+body {
+  background-color: #f0f2f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Contenedor del formulario */
+.container {
+  background-color: white;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+/* Estilos del título */
+h2 {
+  text-align: center;
+  color: #333;
+  font-size: 1.8rem;
+}
+
+/* Estilos de los inputs */
+input {
+  width: 100%;
+  padding: 12px;
+  margin-top: 22px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 20px;
+  transition: border-color 0.3s ease;
+}
+
+input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Estilos del botón */
+button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 22px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Estilos para los enlaces */
+p {
+  text-align: center;
+  margin-top: 20px;
+  color: #666;
+}
+
+p a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+
+#uinote{
+  background-color: black;
+  color: white;
+  width: 400px;
+  font-size: 13px;
+}

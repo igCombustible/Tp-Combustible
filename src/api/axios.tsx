@@ -2,5 +2,5 @@ import axios from 'axios';
 
 export default axios.create({
 
-    baseURL: 'http://localhost:8080'
+    baseURL: window.location.protocol + "//" + window.location.host + '/api'
 })
