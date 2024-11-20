@@ -27,6 +27,7 @@ export const Nav = () => {
               <ul className="dropdown-menu">
                 <li><Link className="dropdown-item" aria-current="page" to="/vehiculos-por-consumo">Vehiculos por consumo</Link></li>
                 <li><Link className="dropdown-item" aria-current="page" to="/vehiculos-por-promedio-km">Vehiculos por promedio de Km recorridos por consumo</Link></li>
+
               </ul>
             </li>
             <li className="nav-item dropdown">
@@ -37,6 +38,11 @@ export const Nav = () => {
               )}
               <ul className="dropdown-menu">
                 <li><Link className="dropdown-item" to="/ticketsEsperando">Confirmar tickets</Link></li>
+                <li><Link className="dropdown-item" to="/usuariosEsperando">usuario pendientes</Link></li>
+                <li><Link className="dropdown-item" to="/UsuariosAceptados">Usuarios Aceptados</Link></li>
+
+               
+
               </ul>
             </li>
           </ul>
