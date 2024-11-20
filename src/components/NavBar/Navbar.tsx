@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./NavBar.css";
+import "../NavBar/Navbar.css";
 
 export const Nav = () => {
   const roles = JSON.parse(sessionStorage.getItem('Rol') || '[]');
