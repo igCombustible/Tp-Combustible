@@ -13,6 +13,9 @@ import { AgregarTicket } from './components/Tickets/AgregarTicket';
 import { ObtenerUsuarios } from './components/Usuarios/ObtenerUsuarios';
 import { ConsumoVehiculos } from './components/Reportes/ConsumoVehiculos';
 import { ConsumoPorKm } from './components/Reportes/ConsumoPorKm';
+import { ListaUsuariosAceptados } from './components/Usuarios/ListaUsuariosAceptados';
+import { UsuariosAceptados } from './components/Usuarios/UsuariosAceptados';
+import { ListaUsuariosALaEspera } from './components/Usuarios/ListaUsuariosALaEspera';
 
 function App() {
   return (
@@ -36,6 +39,10 @@ function App() {
           
           <Route element={<RutaPrivada roles={['OPERADOR']} />}>
             <Route path="/ticketsEsperando" element={<ListaTicketsALaEspera />} />
+            <Route path="/usuariosEsperando" element={<ListaUsuariosALaEspera />} />
+            <Route path="/UsuariosAceptados" element={<UsuariosAceptados />} />
+            
+
           </Route>
 
           <Route element={<RutaPrivada />}>
