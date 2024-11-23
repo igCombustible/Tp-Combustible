@@ -45,7 +45,7 @@ export const ListaUsuariosALaEspera = () => {
     const [busqueda, setBusqueda] = useState('');
 
     const usuariosFiltrados = usuario.filter((usuario) =>
-        usuario.name.toLowerCase().includes(busqueda.toLowerCase())
+        usuario.email.toLowerCase().includes(busqueda.toLowerCase())
     );
 
     return (
@@ -66,7 +66,7 @@ export const ListaUsuariosALaEspera = () => {
                 </div>
                     
                 <UsuarioTable
-                    usuario={usuario} 
+                    usuario={usuariosFiltrados} 
                     onAceptar={handleAceptar} 
                     onRechazar={handleRechazar} 
                 />
