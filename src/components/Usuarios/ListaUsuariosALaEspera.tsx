@@ -42,15 +42,29 @@ export const ListaUsuariosALaEspera = () => {
             console.error("Error al confirmar el usuario", error);
         }
     };
+    const [busqueda, setBusqueda] = useState('');
+
+    const usuariosFiltrados = usuario.filter((usuario) =>
+        usuario.name.toLowerCase().includes(busqueda.toLowerCase())
+    );
 
     return (
         <>
             <Nav />
             <div className="contenedor">
                 <div className="header-container">
-                    <h1>Usuarios por aceptar</h1>
+                    <h1>Usuarios a confirmar</h1>
                     {error && <p className="alert alert-danger">{error}</p>}
+                </div>    
+                <div className="barra-busqueda">
+                    <input
+                        type="text"
+                        placeholder="Buscar por nombre..."
+                        value={busqueda}
+                        onChange={(e) => setBusqueda(e.target.value)}
+                    />
                 </div>
+                    
                 <UsuarioTable
                     usuario={usuario} 
                     onAceptar={handleAceptar} 
