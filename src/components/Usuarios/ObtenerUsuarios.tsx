@@ -7,7 +7,7 @@ import { Modal } from './Modal';
 import './Modal.css';
 
 export const ObtenerUsuarios = () => {
-    const OBTENER_USUARIOS = '/usuario';
+    const OBTENER_USUARIOS = '/usuario/aceptados';
     const OBTENER_ROLES = '/rol'; 
     const [usuarios, setUsuarios] = useState<Usuario[]>([]);
     const [roles, setRoles] = useState<string[]>([]);
