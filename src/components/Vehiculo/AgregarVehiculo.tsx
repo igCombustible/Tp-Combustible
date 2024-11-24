@@ -3,31 +3,39 @@ import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import {Nav} from '../NavBar/Navbar';
 import apiClient from '../../api/apiService';
+import { Vehiculo} from '../../modelo/Vehiculo'
 
 
 export const AgregarVehiculo = () => {
 
-    const [marca, setMarca] = useState<string>(''); 
-    const [modelo, setModelo] = useState<string>('');
-    const [patente, setPatente] = useState<string>('');
+    const [vehiculo, setVehiculo] = useState<Vehiculo>({
+      marca: '',
+      modelo: '',
+      patente: '',
+      ultimoValorConocidoKm: 0, 
+      estado_vehiculo: false,
+      deleted: false 
+    });
     const [suceso,setSuceso] = useState<boolean>(false);
     const [errMsg, setErrMsg] = useState<string>('');
 
     const AGREGARVEHICULO = '/vehiculo';
     const navigate = useNavigate();
 
+    const handleChange = (e) => {
+      setVehiculo({
+          ...vehiculo,
+          [e.target.name]: e.target.value,
+      });
+    };
+  
     
     const handleSubmit = async (e) => {
         e.preventDefault();
         
         try {
             await apiClient.post(AGREGARVEHICULO, 
-                      JSON.stringify({    patente: patente,
-                                          marca: marca, 
-                                          modelo: modelo, 
-                                          ultimoValorConocidoKm: 0, 
-                                          estado_vehiculo: false,
-                                          deleted: false }))
+                      JSON.stringify( vehiculo ))
             setSuceso(true);
         } catch (err: any) {
             
@@ -64,7 +72,8 @@ export const AgregarVehiculo = () => {
             className="form-control"
             id="marca"
             name="marca"
-            onChange={(e) => setMarca(e.target.value)}
+            value={vehiculo.marca}
+            onChange={handleChange}
             required
           />
         </div>
@@ -75,7 +84,8 @@ export const AgregarVehiculo = () => {
             className="form-control"
             id="modelo"
             name="modelo"
-            onChange={(e) => setModelo(e.target.value)}
+            value={vehiculo.modelo}
+            onChange={handleChange}
             required
           />
         </div>
@@ -86,7 +96,8 @@ export const AgregarVehiculo = () => {
             className="form-control"
             id="patente"
             name="patente"
-            onChange={(e) => setPatente(e.target.value)}
+            value={vehiculo.patente}
+            onChange={handleChange}
             required
           />
         </div>

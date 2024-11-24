@@ -4,4 +4,5 @@ export type Vehiculo = {
     patente: string;
     ultimoValorConocidoKm: number;
     estado_vehiculo: boolean;
+    deleted: boolean;
   }
