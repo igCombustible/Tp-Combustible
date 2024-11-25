@@ -1,5 +1,5 @@
-export enum EstadoDelUsuario {
-    APROBADO = 'APROBADO',
+export enum EstadoUsuario {
+    ACEPTADO= 'ACEPTADO',
     RECHAZADO = 'RECHAZADO',
-    ESPERANDO = 'ESPERANDO'
+    PENDIENTE = 'PENDIENTE'
 }

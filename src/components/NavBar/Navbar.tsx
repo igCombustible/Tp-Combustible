@@ -38,8 +38,8 @@ export const Nav = () => {
               )}
               <ul className="dropdown-menu">
                 <li><Link className="dropdown-item" to="/ticketsEsperando">Confirmar tickets</Link></li>
-                <li><Link className="dropdown-item" to="/usuariosEsperando">usuario pendientes</Link></li>
-                <li><Link className="dropdown-item" to="/UsuariosAceptados">Usuarios Aceptados</Link></li>
+                {/* <li><Link className="dropdown-item" to="/usuariosEsperando">usuario pendientes</Link></li>
+                <li><Link className="dropdown-item" to="/UsuariosAceptados">Usuarios Aceptados</Link></li> */}
 
                
 

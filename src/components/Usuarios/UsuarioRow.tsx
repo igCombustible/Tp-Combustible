@@ -5,21 +5,22 @@ import { BotonesAccion } from "./BotonesAccion";
 
 interface UsuarioRowProps {
     usuario: Usuario;
-    onAceptar: (id: string) => void;
-    onRechazar: (id: string) => void;
+    onAsignarRol: (usuario: Usuario) => void;
+    onAceptar: (usuario: Usuario) => void;
+    onRechazar: (usuario: Usuario) => void;
 }
 
-export const UsuarioRow: React.FC<UsuarioRowProps> = ({ usuario, onAceptar, onRechazar }) => {
-    const { id, email, estado } = usuario;
+export const UsuarioRow: React.FC<UsuarioRowProps> = ({ usuario, onAsignarRol, onAceptar, onRechazar }) => {
 
     return (
         <tr>
-            <td>{id}</td>
-            <td>{email}</td>
-            <td>{estado}</td>
+            <td>{usuario.name}</td>
+            <td>{usuario.email}</td>
+            <td>{usuario.roles.join(", ")}</td>
             <td>
                 <BotonesAccion 
-                    usuarioId={id} 
+                    usuario={usuario} 
+                    onAsignarRol={onAsignarRol}
                     onAceptar={onAceptar} 
                     onRechazar={onRechazar} 
                 />

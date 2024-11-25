@@ -1,5 +1,5 @@
 export enum EstadoDelTicket {
-    APROBADO = 'APROBADO',
+    ACEPTADO = 'ACEPTADO',
     RECHAZADO = 'RECHAZADO',
     ESPERANDO = 'ESPERANDO'
 }

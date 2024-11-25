@@ -41,11 +41,14 @@
 .modal-close-button {
     background-color: #dc3545;
     color: white;
-    padding: 10px;
+    padding: 10px 20px;
     border: none;
-    margin-top: 20px;
+    margin: 5px;
     cursor: pointer;
     border-radius: 4px;
+    transition: background-color 0.3s;
+    min-width: 120px;  /* Asegura un tamaño mínimo */
+    text-align: center;
 }
 
 .modal-close-button:hover {
