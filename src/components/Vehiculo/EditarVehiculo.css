@@ -1,0 +1,6 @@
+label {
+    font-size: 16px;
+    color: #000; /* Color negro o uno que contraste con el fondo */
+    display: inline-block; /* Asegura que el label ocupe espacio */
+    margin-bottom: 5px; /* Espaciado debajo del label */
+}

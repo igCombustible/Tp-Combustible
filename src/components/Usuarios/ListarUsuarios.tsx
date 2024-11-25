@@ -1,13 +1,16 @@
 import React from 'react';
 import { Usuario } from '../../modelo/Usuario';
 import './ListaUsuario.css';
+import { UsuarioRow } from './UsuarioRow';
 
 interface ListaUsuariosProps {
     usuarios: Usuario[];
     onAsignarRol: (usuario: Usuario) => void;
+    onAceptar: (usuario: Usuario) => void;
+    onRechazar: (usuario: Usuario) => void;
 }
 
-export const ListarUsuarios: React.FC<ListaUsuariosProps> = ({ usuarios, onAsignarRol }) => (
+export const ListarUsuarios: React.FC<ListaUsuariosProps> = ({ usuarios, onAsignarRol, onAceptar, onRechazar }) => (
     <div className="usuarios-container">
         <h2>Lista de Usuarios</h2>
         <div className="usuarios-table-container">
@@ -22,14 +25,13 @@ export const ListarUsuarios: React.FC<ListaUsuariosProps> = ({ usuarios, onAsign
                 </thead>
                 <tbody>
                     {usuarios.map((usuario) => (
-                        <tr key={usuario.id}>
-                            <td>{usuario.name}</td>
-                            <td>{usuario.email}</td>
-                            <td>{usuario.roles.join(", ")}</td>
-                            <td>
-                                <button onClick={() => onAsignarRol(usuario)}>Asignar Rol</button>
-                            </td>
-                        </tr>
+                        <UsuarioRow 
+                            key={usuario.id} 
+                            usuario={usuario} 
+                            onAsignarRol={onAsignarRol}
+                            onAceptar={onAceptar} 
+                            onRechazar={onRechazar} 
+                        />
                     ))}
                 </tbody>
             </table>

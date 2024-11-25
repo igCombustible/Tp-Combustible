@@ -49,16 +49,34 @@ export const ObtenerUsuarios = () => {
         }
     };
 
+    const handleAceptar = async (id: string) => {
+        try {
+            await apiClient.put(`/usuario/${id}`);
+            obtenerUsuarios();
+        } catch (error) {
+            console.error("Error al confirmar el usuario", error);
+        }
+    };
+
+    const handleRechazar = async (id: string) => {
+        try {
+            await apiClient.delete(`/usuario/${id}`);
+            obtenerUsuarios();
+        } catch (error) {
+            console.error("Error al confirmar el usuario", error);
+        }
+    };
+
     return (
         <>
             <Nav />
-            <ListarUsuarios usuarios={usuarios} onAsignarRol={(usuario) => setSelectedUser(usuario)} />
+            <ListarUsuarios usuarios={usuarios} onAsignarRol={(usuario) => setSelectedUser(usuario)} onAceptar={(usuario) => handleAceptar(usuario.id)} onRechazar={(usuario) => handleRechazar(usuario.id)} />
             {selectedUser && (
                 <Modal
                     usuario={selectedUser}
                     roles={roles}
                     onClose={() => setSelectedUser(null)}
-                    onAsignar={(rol) => handleAsignarRol(selectedUser.id, rol)}
+                    onAsignar={(rol:any) => handleAsignarRol(selectedUser.id, rol)}
                 />
             )}
         </>
