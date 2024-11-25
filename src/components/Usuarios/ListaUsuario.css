@@ -1,12 +1,21 @@
 /* Contenedor principal de usuarios */
 .usuarios-container {
     width: 100vw; /* Ocupa el ancho completo de la ventana */
-    margin-top: 90px; /* Separación desde la barra superior */
-    height: calc(100vh - 100px); 
+    margin-top: 80px; /* Separación desde la barra superior */
+    height: calc(100vh - 210px); 
     box-sizing: border-box; 
     overflow: hidden; 
     display: flex; 
     flex-direction: column; 
+}
+form.barra-busqueda{
+    margin-right: 5px;
+  }
+
+.header-container {
+display: flex; 
+align-items: center; 
+margin: 0px 40px;
 }
 
 /* Contenedor de la tabla de usuarios con scroll */

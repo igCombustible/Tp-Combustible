@@ -19,13 +19,15 @@ export const ListarUsuarios: React.FC<ListaUsuariosProps> = ({ usuarios, onAsign
     );
   
     return (
-        <div>
-            <h2>Lista de Usuarios</h2>
-            <Buscador
-            value={searchEmail}
-            onChange={setSearchEmail}
-            placeholder="Buscar por email"
-            />
+        <div className="usuarios-container">
+            <div className="header-container">
+                <h1>Lista de Usuarios</h1>
+                <Buscador
+                value={searchEmail}
+                onChange={setSearchEmail}
+                placeholder="Buscar por email"
+                />
+            </div>
             <div className="usuarios-table-container">
                 <table className="usuarios-table">
                     <thead>
