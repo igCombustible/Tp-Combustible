@@ -124,6 +124,7 @@ export const EditarVehiculo = () => {
                         </label>
                     </div>
                     <button type="submit" className="btn btn-primary">Guardar Cambios</button>
+                    <button onClick={() => navigate('/home')} className="btn btn-secondary ms-2">Cancelar</button>
                 </form>
             </div>
         </>
