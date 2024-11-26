@@ -10,12 +10,12 @@
 }
 form.barra-busqueda{
     margin-right: 5px;
-  }
+}
 
 .header-container {
-display: flex; 
-align-items: center; 
-margin: 0px 40px;
+    display: flex; 
+    align-items: center; 
+    margin: 0px 40px;
 }
 
 /* Contenedor de la tabla de usuarios con scroll */
@@ -43,10 +43,33 @@ button:hover {
     background-color: #0056b3;
 }
 
-/* Estilo del título */
-h2 {
-    margin: 0 0 10px; 
-    width: 100%; /* Asegura que el título ocupe todo el ancho disponible */
-    text-align: left; 
-    color: black;
+/* Contenedor del menu de filtros */
+.filtros-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; 
+    margin: 0 20px; 
+    padding: 5px 10px;
+    background-color: transparent; 
+    border: none; 
+    border-radius: 0;
+}
+
+/* Menu desplegable */
+.filtros-container select {
+    padding: 8px; 
+    font-size: 14px; 
+    color: #555; 
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+    background-color: white; 
+    cursor: pointer;
+    transition: border-color 0.3s;
+}
+
+/* Estilo al enfocar el select */
+.filtros-container select:focus {
+    border-color: #007bff; 
+    outline: none; 
+    box-shadow: 0 0 4px rgba(0, 123, 255, 0.4); 
 }

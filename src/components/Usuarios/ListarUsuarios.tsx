@@ -3,6 +3,7 @@ import { Usuario } from "../../modelo/Usuario";
 import "./ListaUsuario.css";
 import { Buscador } from "../../Buscador/Buscador";
 import { UsuarioRow } from './UsuarioRow';
+import { EstadoUsuario } from "../../modelo/EstadoUsuario";
 
 interface ListaUsuariosProps {
     usuarios: Usuario[];
@@ -13,19 +14,35 @@ interface ListaUsuariosProps {
 
 export const ListarUsuarios: React.FC<ListaUsuariosProps> = ({ usuarios, onAsignarRol, onAceptar, onRechazar }) => {
     const [searchEmail, setSearchEmail] = useState<string>('');
-  
-    const filteredUsuarios = usuarios.filter(usuario =>
-      usuario.email.toLowerCase().includes(searchEmail.toLowerCase())
-    );
-  
+    const [estadoFiltro, setEstadoFiltro] = useState<string>('todos');
+
+    const filteredUsuarios = usuarios.filter((usuario) => {
+        const matchesEmail = usuario.email.toLowerCase().includes(searchEmail.toLowerCase());
+        const matchesEstado = estadoFiltro === 'todos' || usuario.estado === estadoFiltro;
+        return matchesEmail && matchesEstado;
+    });
+
     return (
         <div className="usuarios-container">
             <div className="header-container">
                 <h1>Lista de Usuarios</h1>
+                <div className="filtros-container">
+                    <select
+                        id="estadoFiltro"
+                        value={estadoFiltro}
+                        onChange={(e) => setEstadoFiltro(e.target.value)}
+                    >
+                        <option value="todos">Todos</option>
+                        <option value={EstadoUsuario.ACEPTADO}>Aceptado</option>
+                        <option value={EstadoUsuario.RECHAZADO}>Rechazado</option>
+                        <option value={EstadoUsuario.PENDIENTE}>Pendiente</option>
+                    </select>
+                </div>
+
                 <Buscador
-                value={searchEmail}
-                onChange={setSearchEmail}
-                placeholder="Buscar por email"
+                    value={searchEmail}
+                    onChange={setSearchEmail}
+                    placeholder="Buscar por email"
                 />
             </div>
             <div className="usuarios-table-container">
