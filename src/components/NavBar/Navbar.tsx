@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../NavBar/Navbar.css";
+import { BotonCerrarSesion } from "../Botones/BotonCerrarSesion";
 
 export const Nav = () => {
   const roles = JSON.parse(sessionStorage.getItem('Rol') || '[]');
@@ -14,9 +15,6 @@ export const Nav = () => {
         </button>
         <div className="collapse navbar-collapse" id="navbarNavDropdown">
           <ul className="navbar-nav">
-            <li className="nav-item">
-              <Link className="nav-link active" aria-current="page" to="/home">Home</Link>
-            </li>
             <li className="nav-item">
               <Link className="nav-link active" aria-current="page" to="/usuarios">Lista de usuarios</Link>
             </li>
@@ -38,15 +36,13 @@ export const Nav = () => {
               )}
               <ul className="dropdown-menu">
                 <li><Link className="dropdown-item" to="/ticketsEsperando">Confirmar tickets</Link></li>
-                {/* <li><Link className="dropdown-item" to="/usuariosEsperando">usuario pendientes</Link></li>
-                <li><Link className="dropdown-item" to="/UsuariosAceptados">Usuarios Aceptados</Link></li> */}
-
-               
-
-              </ul>
+              </ul> 
             </li>
           </ul>
-        </div>
+          </div>
+          <div className="cerrar-sesion">
+            <BotonCerrarSesion />
+          </div>
       </div>
     </nav>
   );

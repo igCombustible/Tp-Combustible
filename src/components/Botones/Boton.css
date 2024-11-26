@@ -5,8 +5,9 @@
     justify-content: center;
     gap: 10px; 
   }
-  
-  .edit-button,
+
+.logout-botton,
+.edit-button,
 .delete-button,
 .info-button,
 .create-ticket-button {
@@ -32,12 +33,14 @@
 .edit-button:hover {
     background-color: blue;
 }
-  
+
+.logout-botton,
 .delete-button,
 .rechazar-button {
     background-color: #cc4238;
 }
-  
+
+.logout-botton:hover,
 .delete-button:hover,
 .rechazar-button:hover {
     background-color: #9f2e26;

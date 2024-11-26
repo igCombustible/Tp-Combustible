@@ -51,4 +51,39 @@ body {
     background-color: rgb(0, 0, 0) !important; 
 }
 
+.navbar .navbar-collapse {
+    flex-grow: 0; /* Evita que el contenedor crezca */
+    display: flex;
+    padding-left: 400px;
+    justify-content: flex-end; /* Alinea el contenido hacia la derecha */
+    align-items: center; /* Centra verticalmente los elementos */
+    margin-right: 10px; /* Ajusta el espaciado hacia el borde derecho */
+  }
+  
+  .navbar .navbar-collapse .nav-link {
+    font-size: 1.2rem; /* Letras más grandes */
+    font-weight: 500; /* Fuente más visible */
+    padding: 5px 10px; /* Espaciado interno */
+  }
+  
+  .navbar .cerrar-sesion {
+    display: flex;
+    align-items: center;
+    margin-right: 20px; /* Separa el botón del contenedor de navegación */
+  }
+  
+  .navbar .cerrar-sesion button {
+    background-color: #dc3545; /* Botón rojo */
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .navbar .cerrar-sesion button:hover {
+    background-color: #c82333; /* Efecto hover más oscuro */
+  }
 
+  
