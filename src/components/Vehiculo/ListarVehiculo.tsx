@@ -3,8 +3,13 @@ import React from "react";
 import apiClient from '../../api/apiService';
 import { Vehiculo } from "../../modelo/Vehiculo";
 import "./ListarVehiculo.css";
+import "../Botones/Boton.css";
 import { Link } from "react-router-dom";
 import { Buscador } from "../../Buscador/Buscador";
+import { BotonEditar } from "../Botones/BotonEditar";
+import { BotonEliminar } from "../Botones/BotonEliminar";
+import { BotonVerInfo } from "../Botones/BotonVerInfo";
+import { BotonAgregarTicket } from "../Botones/BotonAgregarTicket";
 
 export const ListarVehiculo = () => {
   const OBTENERVEHICULOS = '/vehiculo';
@@ -65,23 +70,14 @@ export const ListarVehiculo = () => {
                 <td>
                   <div className="botones-accion">
                     {roles.includes('USER') && (
-                      <Link to={'/agregarTicket'}>
-                        <button className="create-ticket-button">Crear Ticket</button>
-                      </Link>
+                      <><BotonAgregarTicket /><BotonVerInfo patente={vehiculo.patente} /></>
                     )}
                     {roles.includes('ADMIN') && (
                       <>
-                        <Link to={`/editarVehiculo/${vehiculo.patente}`}>
-                          <button className="edit-button">Editar</button>
-                        </Link>
-                        <Link to={`/eliminarVehiculo/${vehiculo.patente}`}>
-                          <button className="delete-button">Eliminar</button>
-                        </Link>
+                        <BotonEditar patente={vehiculo.patente}/>
+                        <BotonEliminar patente={vehiculo.patente}/>
                       </>
                     )}
-                    <Link to={`/infoVehiculo/${vehiculo.patente}`}>
-                      <button className="info-button">Ver Info</button>
-                    </Link>
                   </div>
                 </td>
               </tr>

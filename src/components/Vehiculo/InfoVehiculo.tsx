@@ -6,6 +6,10 @@ import { useParams } from 'react-router-dom';
 import {Ticket} from '../../modelo/Ticket'
 import './InfoVehiculo.css'
 import { ConsumoVehiculo } from '../../modelo/ConsumoVehiculo';
+import { BotonAgregarTicket } from '../Botones/BotonAgregarTicket';
+import { BotonEditar } from '../Botones/BotonEditar';
+import { BotonEliminar } from '../Botones/BotonEliminar';
+import { BotonVerInfo } from '../Botones/BotonVerInfo';
 
 
 export const InfoVehiculo = () => {
@@ -26,6 +30,7 @@ export const InfoVehiculo = () => {
     }
     
     const { auth } = authContext;
+    const roles = JSON.parse(sessionStorage.getItem('Rol') || '[]');
 
     useEffect(() => {
         buscarVehiculo();
@@ -67,7 +72,21 @@ export const InfoVehiculo = () => {
                             <p><strong>Último Kilometraje Conocido:</strong> {consumo.km}</p>
                             <p><strong>Litros Consumidos:</strong> {consumo.consumo} L</p>
                         </div>
-    
+                        
+                        <div className="botones-accion">
+                            {roles.includes('USER') && (
+                                <>
+                                <BotonAgregarTicket />
+                                </>
+                            )}
+                            {roles.includes('ADMIN') && (
+                                <>
+                                <BotonEditar patente={consumo.patente}/>
+                                <BotonEliminar patente={consumo.patente}/>
+                                </>
+                            )}
+                  
+                        </div>
                         <div className="vehiculo-tickets">
                             <h3>Tickets del Vehículo</h3>
                             {tickets ? (
@@ -88,7 +107,7 @@ export const InfoVehiculo = () => {
                                                     <tr key={ticket.id}>
                                                         <td>{new Date(ticket.fechaDeSolicitud).toLocaleDateString()}</td>
                                                         <td>{ticket.cantidadDeSolicitud}</td>
-                                                        <td>{ticket.usuario?.email || 'No disponible'}</td> {/* Asegurarse de acceder a usuario.email */}
+                                                        <td>{ticket.usuario?.email || 'No disponible'}</td> 
                                                     </tr>
                                                 ))}
                                             </tbody>
