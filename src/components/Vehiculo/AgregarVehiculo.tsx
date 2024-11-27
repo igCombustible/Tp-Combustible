@@ -1,9 +1,10 @@
-import axios from '../../api/axios';
 import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import {Nav} from '../NavBar/Navbar';
 import apiClient from '../../api/apiService';
 import { Vehiculo} from '../../modelo/Vehiculo'
+import { BotonConfirmar } from '../Botones/BotonConfirmar';
+import { BotonCancelar } from '../Botones/BotonCancelar';
 
 
 export const AgregarVehiculo = () => {
@@ -48,10 +49,6 @@ export const AgregarVehiculo = () => {
         }
       } 
     };
-
-    const cancelarOperacion = () => {
-      navigate('/Home');
-    }
 
     return (
     <>
@@ -101,8 +98,8 @@ export const AgregarVehiculo = () => {
             required
           />
         </div>
-        <button type="submit" className="btn btn-primary" onClick={handleSubmit}>Confirmar</button>
-        <button type="button" className="btn btn-primary" onClick={cancelarOperacion}>Cancelar</button>
+        <BotonConfirmar funcion={handleSubmit} />
+        <BotonCancelar />
       </form>
     </div> 
     )

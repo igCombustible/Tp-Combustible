@@ -4,6 +4,8 @@ import AuthContext from '../../context/AuthProvider';
 import { Nav } from '../NavBar/Navbar';
 import apiClient from '../../api/apiService';
 import { Vehiculo } from '../../modelo/Vehiculo';
+import { BotonConfirmar } from '../Botones/BotonConfirmar';
+import { BotonCancelar } from '../Botones/BotonCancelar';
 
 export const EditarVehiculo = () => {
     const authContext = useContext(AuthContext);
@@ -123,8 +125,8 @@ export const EditarVehiculo = () => {
                             El vehículo está {vehiculo.estado_vehiculo ? "habilitado" : "inhabilitado"}
                         </label>
                     </div>
-                    <button type="submit" className="btn btn-primary">Guardar Cambios</button>
-                    <button onClick={() => navigate('/home')} className="btn btn-secondary ms-2">Cancelar</button>
+                    <BotonConfirmar funcion={handleSubmit} />
+                    <BotonCancelar />
                 </form>
             </div>
         </>

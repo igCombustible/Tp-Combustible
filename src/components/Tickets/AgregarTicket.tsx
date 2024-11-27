@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import AuthContext from '../../context/AuthProvider';
 import apiClient from '../../api/apiService';
 import { Nav } from "../NavBar/Navbar";
+import '../Botones/Boton.css';
 import { VehiculoSelect } from '../Vehiculo/VehiculoSelect';
 import { TicketForm } from './TicketForm';
 import { Vehiculo } from "../../modelo/Vehiculo";

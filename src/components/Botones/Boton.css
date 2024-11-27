@@ -1,11 +1,25 @@
-.botones-accion {
+.botones-accion .restaurar-button,
+.botones-accion .rechazar-button {
+    position: relative;
+    padding: 10px;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 24px;
+    width: auto;
+    height: auto;
+    transition: background-color 0.3s, transform 0.2s ease-in-out;
     display: flex;
-    flex-direction: row;
     align-items: center;
     justify-content: center;
-    gap: 10px; 
-  }
+}
 
+
+.restaurar-button
+.rechazar-button,
+.aceptar-button,
+.asignar-button,
 .logout-botton,
 .edit-button,
 .delete-button,
@@ -32,6 +46,14 @@
   
 .edit-button:hover {
     background-color: blue;
+}
+
+.restaurar-button{
+    background-color: rgb(240, 240, 4);
+}
+
+.restaurar-button:hover{
+    background-color: #e0f67e;;
 }
 
 .logout-botton,
@@ -70,6 +92,10 @@
     background-color: #c64500;
 }  
 
+.restaurar-button::after,
+.rechazar-button::after,
+.aceptar-button::after,
+.asignar-button::after,
 .edit-button::after,
 .delete-button::after,
 .info-button::after,
@@ -91,6 +117,10 @@
   z-index: 10;
 }
 
+.restaurar-button:hover::after,
+.rechazar-button:hover::after,
+.aceptar-button:hover::after,
+.asignar-button:hover::after,
 .edit-button:hover::after,
 .delete-button:hover::after,
 .info-button:hover::after,

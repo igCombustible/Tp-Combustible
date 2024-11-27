@@ -1,5 +1,5 @@
 import React from "react";
-import './Botones.css';
+import '../Botones/Boton.css';
 
 interface BotonesAccionProps {
     ticketId: string;
@@ -9,7 +9,7 @@ interface BotonesAccionProps {
 
 export const BotonesAccion: React.FC<BotonesAccionProps> = ({ ticketId, onAceptar, onRechazar }) => (
     <div className="botones-accion">
-        <button className="aceptar-button" onClick={() => onAceptar(ticketId)}>Aceptar ticket</button>
-        <button className="rechazar-button" onClick={() => onRechazar(ticketId)}>Rechazar ticket</button>
+        <button className="aceptar-button" onClick={() => onAceptar(ticketId)}><i className="bi bi-check2"></i></button>
+        <button className="rechazar-button" onClick={() => onRechazar(ticketId)}><i className="bi bi-x-lg"></i></button>
     </div>
 );

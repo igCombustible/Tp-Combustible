@@ -2,6 +2,8 @@ import apiClient from '../../api/apiService';
 import React, { useContext, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import {Nav} from '../NavBar/Navbar';
+import { BotonConfirmar } from '../Botones/BotonConfirmar';
+import { BotonCancelar } from '../Botones/BotonCancelar';
 
 export const EliminarVehiculo = () => {
     const { patente } = useParams<{ patente: string }>(); 
@@ -32,8 +34,8 @@ export const EliminarVehiculo = () => {
                 <h2>Eliminar Vehículo</h2>
                 {errMsg && <p className="alert alert-danger">{errMsg}</p>}
                 <p>¿Estás seguro de que deseas eliminar el vehículo con patente {patente}?</p>
-                <button onClick={handleDelete} className="btn btn-danger">Confirmar Eliminación</button>
-                <button onClick={() => navigate('/home')} className="btn btn-secondary ms-2">Cancelar</button>
+                <BotonConfirmar funcion={handleDelete} />
+                <BotonCancelar />
             </div>
         </>
     );

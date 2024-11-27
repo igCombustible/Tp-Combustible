@@ -1,5 +1,5 @@
 import React from "react";
-import '../Tickets/BotonesAccion';
+import '../Botones/Boton.css';
 import { Usuario } from "../../modelo/Usuario";
 import { EstadoUsuario } from "../../modelo/EstadoUsuario"
 
@@ -17,15 +17,32 @@ export const BotonesAccion: React.FC<BotonesAccionProps> = ({usuario, onAsignarR
     <div className="botones-accion">
         { usuario.estado === EstadoUsuario.PENDIENTE  && roles.includes('OPERADOR') &&(
             <>
-                <button className="aceptar-button" onClick={() => onAceptar(usuario)}>Aceptar</button>
-                <button className="rechazar-button" onClick={() => onRechazar(usuario)}>Rechazar</button>
+                <button className="aceptar-button" 
+                        onClick={() => onAceptar(usuario)}
+                        data-tooltip="Aceptar">
+                            <i className="bi bi-check2"></i>
+                </button>
+                <button className="rechazar-button" 
+                        onClick={() => onRechazar(usuario)}
+                        data-tooltip="Rechazar">
+                            <i className="bi bi-x-lg"></i>
+                </button>
             </>
         )}
         { usuario.estado === EstadoUsuario.ACEPTADO  && roles.includes('ADMIN') && (
-            <button className="rechazar-button" onClick={() => onAsignarRol(usuario)}>Asignar Rol</button>
+            <button className="asignar-button" 
+                    onClick={() => onAsignarRol(usuario)}
+                    data-tooltip="Asignar rol">
+                        <i className="bi bi-person-fill-add"></i>
+                        
+            </button>
         )}
         { usuario.estado === EstadoUsuario.RECHAZADO  && roles.includes('OPERADOR') && (
-            <button className="aceptar-button" onClick={() => onAceptar(usuario)}>Darle Segunda Oportunidad</button>
+            <button className="restaurar-button" 
+                    onClick={() => onAceptar(usuario)}
+                    data-tooltip="Restaurar usuario">
+                    <i className="bi bi-person-fill-up"></i>
+                    </button>
         )}
     </div>
 )};
