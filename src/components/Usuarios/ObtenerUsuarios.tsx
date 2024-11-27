@@ -11,6 +11,7 @@ export const ObtenerUsuarios = () => {
     const OBTENER_ROLES = '/rol'; 
     const [usuarios, setUsuarios] = useState<Usuario[]>([]);
     const [roles, setRoles] = useState<string[]>([]);
+    
     const [selectedUser, setSelectedUser] = useState<Usuario | null>(null);
 
     // Obtener usuarios
@@ -67,18 +68,37 @@ export const ObtenerUsuarios = () => {
         }
     };
 
+    
+    const handleForzar = async (id: string, email: string) => {
+        try {
+            const response = await apiClient.post(`/usuario/deshabilita/${id}`);
+            // alert(response.data); 
+            obtenerUsuarios(); 
+        } catch (error) {
+            console.error("Error al deshabilitar la contraseña del usuario", error);
+            // alert("Hubo un error al intentar deshabilitar la contraseña");
+        }
+    };
+    
+
+    
+
     return (
         <>
             <Nav />
-            <ListarUsuarios usuarios={usuarios} onAsignarRol={(usuario) => setSelectedUser(usuario)} onAceptar={(usuario) => handleAceptar(usuario.id)} onRechazar={(usuario) => handleRechazar(usuario.id)} />
+            <ListarUsuarios usuarios={usuarios} onAsignarRol={(usuario) => setSelectedUser(usuario)} onAceptar={(usuario) => handleAceptar(usuario.id)} onRechazar={(usuario) => handleRechazar(usuario.id)}onForzar={(usuario) => handleForzar(usuario.id, usuario.email)}  />
             {selectedUser && (
                 <Modal
                     usuario={selectedUser}
                     roles={roles}
                     onClose={() => setSelectedUser(null)}
                     onAsignar={(rol:any) => handleAsignarRol(selectedUser.id, rol)}
+                    
                 />
+            
             )}
         </>
     );
 };
+
+

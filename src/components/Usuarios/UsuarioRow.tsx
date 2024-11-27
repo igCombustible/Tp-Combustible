@@ -8,9 +8,10 @@ interface UsuarioRowProps {
     onAsignarRol: (usuario: Usuario) => void;
     onAceptar: (usuario: Usuario) => void;
     onRechazar: (usuario: Usuario) => void;
+    onForzar : (usuario: Usuario) => void;
 }
 
-export const UsuarioRow: React.FC<UsuarioRowProps> = ({ usuario, onAsignarRol, onAceptar, onRechazar }) => {
+export const UsuarioRow: React.FC<UsuarioRowProps> = ({ usuario, onAsignarRol, onAceptar, onRechazar,onForzar }) => {
 
     return (
         <tr>
@@ -23,6 +24,7 @@ export const UsuarioRow: React.FC<UsuarioRowProps> = ({ usuario, onAsignarRol, o
                     onAsignarRol={onAsignarRol}
                     onAceptar={onAceptar} 
                     onRechazar={onRechazar} 
+                    onForzar={onForzar}
                 />
             </td>
         </tr>
