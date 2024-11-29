@@ -1,0 +1,64 @@
+/* Estilos del modal */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.modal-button {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+    min-width: 120px;  /* Asegura un tamaño mínimo */
+    text-align: center;
+}
+
+.modal-button:hover {
+    background-color: #0056b3;
+}
+
+.modal-close-button {
+    background-color: #dc3545;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+    min-width: 120px;  /* Asegura un tamaño mínimo */
+    text-align: center;
+}
+
+.modal-close-button:hover {
+    background-color: #c82333;
+}
+
+.modal-content div {
+    display: flex;
+    flex-wrap: wrap;           /* Permite que los botones se ajusten a varias filas */
+    justify-content: center;   /* Centra los botones */
+    gap: 10px;                 /* Añade espacio entre los botones */
+    margin-bottom: 20px;       /* Espacio antes del botón de cerrar */
+}

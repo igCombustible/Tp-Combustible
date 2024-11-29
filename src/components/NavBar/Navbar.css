@@ -1,0 +1,93 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.content {
+    margin-top: 60px; 
+    padding: 20px; 
+}
+
+.navbar a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    padding: 15px;
+}
+
+
+.navbar {
+    background-color: #333;
+    color: white;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed; 
+    top: 0;
+    left: 0; 
+    width: 100%; 
+    z-index: 1000; 
+}
+
+.navbar-nav .nav-link.active, 
+.navbar-nav .nav-link.show{
+    color: rgb(255, 255, 255);
+}
+
+.navbar .nav-link:hover,
+.navbar .navbar-brand{
+    color: rgb(255, 255, 255);
+}
+
+.navbar .dropdown-item{
+    background-color: black;
+}
+
+.navbar .dropdown-item:hover {
+    background-color: lightgray;
+}
+.bg-body-tertiary {
+    background-color: rgb(0, 0, 0) !important; 
+}
+
+.navbar .navbar-collapse {
+    flex-grow: 0; /* Evita que el contenedor crezca */
+    display: flex;
+    justify-content: flex-end; /* Alinea el contenido hacia la derecha */
+    align-items: center; /* Centra verticalmente los elementos */
+    margin-right: 10px; /* Ajusta el espaciado hacia el borde derecho */
+  }
+  
+  .navbar .navbar-collapse .nav-link {
+    font-size: 1.2rem; /* Letras más grandes */
+    font-weight: 500; /* Fuente más visible */
+    padding: 5px 10px; /* Espaciado interno */
+  }
+  
+  .navbar .cerrar-sesion {
+    display: flex;
+    align-items: center;
+    margin-right: 20px; /* Separa el botón del contenedor de navegación */
+  }
+  
+  .navbar .cerrar-sesion button {
+    background-color: #dc3545; /* Botón rojo */
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 10px;
+  }
+  
+  .navbar .cerrar-sesion button:hover {
+    background-color: #c82333; /* Efecto hover más oscuro */
+  }
+
+  #icono-app{
+    font-size: 40px;
+  }
+
+  

@@ -1,0 +1,133 @@
+.botones-accion .restaurar-button,
+.botones-accion .rechazar-button {
+    position: relative;
+    padding: 10px;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 24px;
+    width: auto;
+    height: auto;
+    transition: background-color 0.3s, transform 0.2s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.restaurar-button
+.rechazar-button,
+.aceptar-button,
+.asignar-button,
+.logout-botton,
+.edit-button,
+.delete-button,
+.info-button,
+.forzar-button,
+.create-ticket-button {
+  position: relative;
+  padding: 10px; 
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 24px; /* Tamaño del ícono (ajustado para que no sea muy grande) */
+  width: auto; /* Se ajusta al contenido (ícono) */
+  height: auto;
+  transition: background-color 0.3s, transform 0.2s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+  
+.edit-button {
+    background-color: #1815cd;
+}
+  
+.edit-button:hover {
+    background-color: blue;
+}
+
+.restaurar-button{
+    background-color: rgb(240, 240, 4);
+}
+
+.restaurar-button:hover{
+    background-color: #e0f67e;;
+}
+
+.logout-botton,
+.delete-button,
+.rechazar-button {
+    background-color: #cc4238;
+}
+
+.logout-botton:hover,
+.delete-button:hover,
+.rechazar-button:hover {
+    background-color: #9f2e26;
+}
+  
+.info-button {
+    background-color: #17a2b8;
+}
+  
+.info-button:hover {
+    background-color: #138496;
+}
+  
+.aceptar-button {
+    background-color: #28a745;
+}
+  
+.aceptar-button:hover {
+    background-color: #218838;
+}
+  
+.create-ticket-button {
+    background-color: #f06317;
+}
+  
+.create-ticket-button:hover {
+    background-color: #c64500;
+}  
+
+.restaurar-button::after,
+.rechazar-button::after,
+.aceptar-button::after,
+.asignar-button::after,
+.forzar-button::after,
+.edit-button::after,
+.delete-button::after,
+.info-button::after,
+.create-ticket-button::after {
+  content: attr(data-tooltip); /* Toma el texto de data-tooltip */
+  position: absolute;
+  bottom: calc(100% + 8px); /* Aparece arriba del botón */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s, visibility 0.2s;
+  z-index: 10;
+}
+
+.restaurar-button:hover::after,
+.rechazar-button:hover::after,
+.aceptar-button:hover::after,
+.asignar-button:hover::after,
+.edit-button:hover::after,
+.forzar-button:hover::after,
+.delete-button:hover::after,
+.info-button:hover::after,
+.create-ticket-button:hover::after {
+  opacity: 1;
+  visibility: visible;
+}
