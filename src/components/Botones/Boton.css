@@ -97,6 +97,7 @@
 .rechazar-button::after,
 .aceptar-button::after,
 .asignar-button::after,
+.forzar-button::after,
 .edit-button::after,
 .delete-button::after,
 .info-button::after,
@@ -123,6 +124,7 @@
 .aceptar-button:hover::after,
 .asignar-button:hover::after,
 .edit-button:hover::after,
+.forzar-button:hover::after,
 .delete-button:hover::after,
 .info-button:hover::after,
 .create-ticket-button:hover::after {
