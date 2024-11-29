@@ -10,9 +10,10 @@ interface ListaUsuariosProps {
     onAsignarRol: (usuario: Usuario) => void;
     onAceptar: (usuario: Usuario) => void;
     onRechazar: (usuario: Usuario) => void;
+    onForzar: (usuario: Usuario) => void;
 }
 
-export const ListarUsuarios: React.FC<ListaUsuariosProps> = ({ usuarios, onAsignarRol, onAceptar, onRechazar }) => {
+export const ListarUsuarios: React.FC<ListaUsuariosProps> = ({ usuarios, onAsignarRol, onAceptar, onRechazar , onForzar}) => {
     const [searchEmail, setSearchEmail] = useState<string>('');
     const [estadoFiltro, setEstadoFiltro] = useState<string>('todos');
 
@@ -63,6 +64,7 @@ export const ListarUsuarios: React.FC<ListaUsuariosProps> = ({ usuarios, onAsign
                                 onAsignarRol={onAsignarRol}
                                 onAceptar={onAceptar} 
                                 onRechazar={onRechazar} 
+                                onForzar={onForzar}
                             />
                         ))}
                     </tbody>
