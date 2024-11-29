@@ -13,6 +13,9 @@ import { AgregarTicket } from './components/Tickets/AgregarTicket';
 import { ObtenerUsuarios } from './components/Usuarios/ObtenerUsuarios';
 import { ConsumoVehiculos } from './components/Reportes/ConsumoVehiculos';
 import { ConsumoPorKm } from './components/Reportes/ConsumoPorKm';
+import { RestablecerContrasenia } from './components/RestablecerContrasenia/RestablecerContrasenia';
+import { VerificarCodigo } from './components/RestablecerContrasenia/VerificarCodigo';
+import { NuevaContrasenia } from './components/RestablecerContrasenia/NuevaContrasenia';
 
 function App() {
   return (
@@ -27,6 +30,10 @@ function App() {
           <Route path="/vehiculos-por-consumo" element={<ConsumoVehiculos />} />
           <Route path="/vehiculos-por-promedio-km" element={<ConsumoPorKm />} />
           <Route path="/usuarios" element={<ObtenerUsuarios  />} />
+
+          <Route path="/restablecer-contrasenia" element={<RestablecerContrasenia />} />
+          <Route path="/verificar-codigo/:email" element={<VerificarCodigo />} />
+          <Route path="/nueva-contrasenia/:email" element={<NuevaContrasenia />} />
 
           <Route element={<RutaPrivada roles={['ADMIN']} />}>
             <Route path="/crearVehiculo" element={<AgregarVehiculo />} />

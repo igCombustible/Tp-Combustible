@@ -113,7 +113,7 @@ export const Login = () => {
           <button id="botonIngreso"  type="submit">Ingresar</button>
         </form>
         <p>¿No tienes una cuenta? <Link to="/registro">Regístrate aquí</Link></p>
-        <p>¿No recuerdas la contraseña? <Link to="/">Cambiar contraseña</Link></p>        {/* falta forntend y backend */}
+        <p>¿No recuerdas la contraseña? <Link to="/restablecer-contrasenia">Cambiar contraseña</Link></p> 
       </div>
 
       )
