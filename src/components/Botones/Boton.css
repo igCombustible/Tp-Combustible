@@ -24,6 +24,7 @@
 .edit-button,
 .delete-button,
 .info-button,
+.forzar-button,
 .create-ticket-button {
   position: relative;
   padding: 10px; 

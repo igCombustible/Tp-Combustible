@@ -67,10 +67,23 @@ export const ObtenerUsuarios = () => {
         }
     };
 
+    const handleForzar = async (id: string, email: string) => {
+        try {
+            const response = await apiClient.delete(`/usuario/deshabilita/${id}`);
+             alert(response.data); 
+            obtenerUsuarios(); 
+        } catch (error) {
+            console.error("Error al deshabilitar la contraseña del usuario", error);
+             alert("Hubo un error al intentar deshabilitar la contraseña");
+        }
+    };
+
+
+
     return (
         <>
             <Nav />
-            <ListarUsuarios usuarios={usuarios} onAsignarRol={(usuario) => setSelectedUser(usuario)} onAceptar={(usuario) => handleAceptar(usuario.id)} onRechazar={(usuario) => handleRechazar(usuario.id)} />
+            <ListarUsuarios usuarios={usuarios} onAsignarRol={(usuario) => setSelectedUser(usuario)} onAceptar={(usuario) => handleAceptar(usuario.id)} onRechazar={(usuario) => handleRechazar(usuario.id)}onForzar={(usuario) => handleForzar(usuario.id, usuario.email)} />
             {selectedUser && (
                 <Modal
                     usuario={selectedUser}

@@ -1,3 +1,4 @@
+import { EstadoPassword } from "./EstadoPassword";
 import { EstadoDelTicket } from "./EstadoTicket";
 import { EstadoUsuario } from "./EstadoUsuario";
 
@@ -7,4 +8,5 @@ export type Usuario = {
     email: string;
     roles: string[];
     estado : EstadoUsuario;
+    estadop: EstadoPassword;
 }
