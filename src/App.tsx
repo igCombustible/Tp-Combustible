@@ -46,7 +46,7 @@ function App() {
           </Route>
 
           <Route element={<RutaPrivada />}>
-            <Route path="/home" element={<Home />} /> 
+            <Route path="/vehiculos" element={<Home />} /> 
           </Route>
           
         </Routes>

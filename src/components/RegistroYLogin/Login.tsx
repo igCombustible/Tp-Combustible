@@ -35,7 +35,7 @@ export const Login = () => {
 
   useEffect(() => {
     if (sucess) {
-      navigate('/home');
+      navigate('/vehiculos');
     }
   }, [sucess, navigate]);
 

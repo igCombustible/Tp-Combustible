@@ -54,7 +54,6 @@ body {
 .navbar .navbar-collapse {
     flex-grow: 0; /* Evita que el contenedor crezca */
     display: flex;
-    padding-left: 400px;
     justify-content: flex-end; /* Alinea el contenido hacia la derecha */
     align-items: center; /* Centra verticalmente los elementos */
     margin-right: 10px; /* Ajusta el espaciado hacia el borde derecho */
@@ -80,10 +79,15 @@ body {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    margin-bottom: 10px;
   }
   
   .navbar .cerrar-sesion button:hover {
     background-color: #c82333; /* Efecto hover más oscuro */
+  }
+
+  #icono-app{
+    font-size: 40px;
   }
 
   

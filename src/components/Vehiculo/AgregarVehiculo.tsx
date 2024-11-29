@@ -56,7 +56,7 @@ export const AgregarVehiculo = () => {
     {suceso ? (
     <div>
       <p>Se ha creado con exito el vehiculo</p>
-      <p><Link to="/Home">Ve al listado de vehiculos</Link></p>
+      <p><Link to="/vehiculos">Ve al listado de vehiculos</Link></p>
     </div>
     ): (
     <div className="container mt-5">

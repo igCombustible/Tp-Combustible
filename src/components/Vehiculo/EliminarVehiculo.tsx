@@ -15,7 +15,7 @@ export const EliminarVehiculo = () => {
     const handleDelete = async () => {
         try {
             await apiClient.delete(ELIMINAR_VEHICULO);
-            navigate('/Home');
+            navigate('/vehiculos');
         } catch (err: any) {
             if (!err?.response) {
                 setErrMsg('El servicio no responde');

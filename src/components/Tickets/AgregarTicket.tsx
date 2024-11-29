@@ -59,7 +59,7 @@ export const AgregarTicket = () => {
     };
 
     const cancelarOperacion = () => {
-        navigate('/Home');
+        navigate('/vehiculos');
     };
 
     return (
@@ -69,7 +69,7 @@ export const AgregarTicket = () => {
                 <div>
                     <p>El ticket se ha sido cargado exitosamente.</p>
                     <p>Debe esperar a confirmacion del operador</p>
-                    <button onClick={() => navigate('/home')}>Home</button>
+                    <button onClick={() => navigate('/vehiculos')}>Home</button>
                 </div>
             ) : (
                 <TicketForm

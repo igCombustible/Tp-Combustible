@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 export const BotonCancelar = () => {
     return(
         <>
-        <Link to={'/Home'}>
+        <Link to={'/vehiculos'}>
         <button type="button" 
                 className="btn btn-danger">
                     Cancelar

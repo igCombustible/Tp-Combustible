@@ -57,7 +57,7 @@ export const EditarVehiculo = () => {
             await apiClient.put(EDITAR_VEHICULO,
                 JSON.stringify(vehiculo)
             );
-            navigate('/home'); 
+            navigate('/vehiculos'); 
         } catch (err: any) {
             if (!err?.response) {
                 setErrMsg('El servicio no responde');

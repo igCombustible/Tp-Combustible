@@ -9,12 +9,12 @@ export const Nav = () => {
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
-        <Link className="navbar-brand" to="/home">Gestión de Vehículos</Link>
-        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-          <span className="navbar-toggler-icon"></span>
-        </button>
+        <i className="bi bi-fuel-pump-fill" id="icono-app"></i>
         <div className="collapse navbar-collapse" id="navbarNavDropdown">
           <ul className="navbar-nav">
+          <li className="nav-item">
+              <Link className="nav-link active" aria-current="page" to="/vehiculos">Lista de vehiculos</Link>
+            </li>
             <li className="nav-item">
               <Link className="nav-link active" aria-current="page" to="/usuarios">Lista de usuarios</Link>
             </li>
@@ -25,20 +25,13 @@ export const Nav = () => {
               <ul className="dropdown-menu">
                 <li><Link className="dropdown-item" aria-current="page" to="/vehiculos-por-consumo">Vehiculos por consumo</Link></li>
                 <li><Link className="dropdown-item" aria-current="page" to="/vehiculos-por-promedio-km">Vehiculos por promedio de Km recorridos por consumo</Link></li>
-
               </ul>
-            </li>
-            <li className="nav-item dropdown">
+              </li>
               {roles.includes('OPERADOR') && (
-                <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Operador
-                </a>
-              )}
-              <ul className="dropdown-menu">
-                <li><Link className="dropdown-item" to="/ticketsEsperando">Confirmar tickets</Link></li>
-              </ul> 
-            </li>
-          </ul>
+                <li><Link className="nav-link active" to="/ticketsEsperando">Confirmar tickets</Link></li>
+              )} 
+              
+            </ul>
           </div>
           <div className="cerrar-sesion">
             <BotonCerrarSesion />
