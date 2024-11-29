@@ -101,7 +101,8 @@
 .edit-button::after,
 .delete-button::after,
 .info-button::after,
-.create-ticket-button::after {
+.create-ticket-button::after,
+.forzar-button::after {
   content: attr(data-tooltip); /* Toma el texto de data-tooltip */
   position: absolute;
   bottom: calc(100% + 8px); /* Aparece arriba del botón */
