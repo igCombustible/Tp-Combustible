@@ -106,7 +106,7 @@ export const EditarVehiculo = () => {
                             type="text"
                             className="form-control"
                             id="ultimos_Km"
-                            name="ultimos_Km"
+                            name="ultimoValorConocidoKm" 
                             value={vehiculo.ultimoValorConocidoKm}
                             onChange={handleChange}
                             required
