@@ -23,12 +23,12 @@ export const Nav = () => {
                 Reportes
               </a>
               <ul className="dropdown-menu">
-                <li><Link className="dropdown-item" aria-current="page" to="/vehiculos-por-consumo">Vehiculos por consumo</Link></li>
-                <li><Link className="dropdown-item" aria-current="page" to="/vehiculos-por-promedio-km">Vehiculos por promedio de Km recorridos por consumo</Link></li>
+                <li><Link className="dropdown-item" aria-current="page" to="/vehiculos/consumo">Vehiculos por consumo</Link></li>
+                <li><Link className="dropdown-item" aria-current="page" to="/vehiculos/promedio-km">Vehiculos por promedio de Km recorridos por consumo</Link></li>
               </ul>
               </li>
               {roles.includes('OPERADOR') && (
-                <li><Link className="nav-link active" to="/ticketsEsperando">Confirmar tickets</Link></li>
+                <li><Link className="nav-link active" to="/tickets/esperando">Confirmar tickets</Link></li>
               )} 
               
             </ul>

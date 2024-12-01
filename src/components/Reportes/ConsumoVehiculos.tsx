@@ -43,7 +43,7 @@ export const ConsumoVehiculos = () => {
                                         <th>Patente</th>
                                         <th>Marca</th>
                                         <th>Modelo</th>
-                                        <th>Consumo</th>
+                                        <th>Consumo total</th>
                                     </tr>
                                 </thead>
                                 <tbody>

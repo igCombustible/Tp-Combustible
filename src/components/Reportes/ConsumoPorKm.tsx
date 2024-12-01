@@ -47,7 +47,7 @@ export const ConsumoPorKm = () => {
                                         <th>Marca</th>
                                         <th>Modelo</th>
                                         <th>Km recorridos</th>
-                                        <th>Consumo</th>
+                                        <th>Consumo total</th>
                                         <th>Km por litro consumido</th>
                                     </tr>
                                 </thead>

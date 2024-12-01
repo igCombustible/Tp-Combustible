@@ -6,6 +6,7 @@ import apiClient from '../../api/apiService';
 import { Vehiculo } from '../../modelo/Vehiculo';
 import { BotonConfirmar } from '../Botones/BotonConfirmar';
 import { BotonCancelar } from '../Botones/BotonCancelar';
+import './EditarVehiculo.css'; 
 
 export const EditarVehiculo = () => {
     const authContext = useContext(AuthContext);
@@ -77,7 +78,7 @@ export const EditarVehiculo = () => {
                 {errMsg && <p className="alert alert-danger">{errMsg}</p>}
                 <form onSubmit={handleSubmit}>
                     <div className="mb-3">
-                        <label htmlFor="marca" className="form-label">Marca:</label>
+                        <p  className="form-label">Marca:</p>
                         <input
                             type="text"
                             className="form-control"
@@ -89,7 +90,7 @@ export const EditarVehiculo = () => {
                         />
                     </div>
                     <div className="mb-3">
-                        <label htmlFor="modelo" className="form-label">Modelo:</label>
+                        <p  className="form-label">Modelo:</p>
                         <input
                             type="text"
                             className="form-control"
@@ -101,7 +102,7 @@ export const EditarVehiculo = () => {
                         />
                     </div>
                     <div className="mb-3">
-                        <label htmlFor="ultimos_Km" className="form-label">Últimos kilómetros:</label>
+                        <p  className="form-label">Últimos kilómetros:</p>
                         <input
                             type="text"
                             className="form-control"
@@ -112,19 +113,19 @@ export const EditarVehiculo = () => {
                             required
                         />
                     </div>
-                    <div className="checkbox-container" style={{ display: 'flex', alignItems: 'center' }}>
-                    <input
-                        type="checkbox"
-                        checked={vehiculo.estado_vehiculo}
-                        onChange={handleChange}
-                        id="estado_Vehiculo"
-                        name="estado_vehiculo"
-                        style={{ width: '15px', marginRight: '5px', verticalAlign: 'center' }}
-                    />
-                        <label htmlFor="estado_Vehiculo" className="checkbox-label" style={{ verticalAlign: 'middle' }}>
+                    <div className="checkbox-container">
+                        <input
+                            type="checkbox"
+                            checked={vehiculo.estado_vehiculo}
+                            onChange={handleChange}
+                            id="estado_Vehiculo"
+                            name="estado_vehiculo"
+                            className="checkbox-vehiculo"
+                        />
+                        <span className="estado">
                             El vehículo está {vehiculo.estado_vehiculo ? "habilitado" : "inhabilitado"}
-                        </label>
-                    </div>
+                        </span>
+                        </div>
                     <BotonConfirmar funcion={handleSubmit} />
                     <BotonCancelar />
                 </form>

@@ -40,7 +40,7 @@ export const ListarVehiculo = () => {
       <div className="header-container">
         <h1>Lista de Vehículos</h1>
         {roles.includes('ADMIN') && (
-          <Link to={`/crearVehiculo`}>
+          <Link to={`/vehiculo/crear`}>
             <button className="create-button">Agregar</button>
           </Link>
         )}
