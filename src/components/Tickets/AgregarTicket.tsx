@@ -1,23 +1,22 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import AuthContext from '../../context/AuthProvider';
 import apiClient from '../../api/apiService';
 import { Nav } from "../NavBar/Navbar";
-import '../Botones/Boton.css';
-import { VehiculoSelect } from '../Vehiculo/VehiculoSelect';
 import { TicketForm } from './TicketForm';
-import { Vehiculo } from "../../modelo/Vehiculo";
 import { EstadoDelTicket } from '../../modelo/EstadoTicket';
+import { Vehiculo } from '../../modelo/Vehiculo';
 
 const AGREGAR_TICKET = '/ticket';
 
 export const AgregarTicket = () => {
-    const authContext = useContext(AuthContext);
+    const [vehiculo, setVehiculo] = useState<Vehiculo | null>(null);
     const navigate = useNavigate();
+    const authContext = useContext(AuthContext);
+    const [error, setError] = useState('');
+    const [suceso, setSuceso] = useState(false);
+    const { patente } = useParams();
 
-    const [vehiculos, setVehiculos] = useState<Vehiculo[]>([]);
-    const [error, setError] = useState<string>('');
-    const [suceso, setSuceso] = useState<boolean>(false);
 
     if (!authContext) {
         throw new Error('El contexto de autenticación no está disponible.');
@@ -26,40 +25,34 @@ export const AgregarTicket = () => {
     const { user } = authContext.auth;
 
     useEffect(() => {
-        const obtenerVehiculos = async () => {
+        const fetchVehiculo = async () => {
             try {
-                const response = await apiClient.get('/vehiculo');
-                setVehiculos(response.data);
-            } catch (err) {
-                setError('Error al obtener los vehículos');
+                const { data } = await apiClient.get(`/vehiculo/${patente}`);
+                setVehiculo(data);
+            } catch {
+                setError('Error al obtener el vehículo');
             }
         };
-        obtenerVehiculos();
-    }, []);
 
-    const handleSubmit = async (patente: string, cantidad: number) => {
-        if (!patente || cantidad <= 0) {
-            setError('Por favor, selecciona un vehículo y una cantidad válida');
-            return;
-        }
+        if (patente) fetchVehiculo();
+    }, [patente]);
+
+    const handleSubmit = async (cantidad) => {
+        if (!vehiculo || cantidad <= 0) return setError('Por favor, selecciona un vehículo y una cantidad válida');
+
         try {
             await apiClient.post(AGREGAR_TICKET, {
-                userName: user,  
-                patente: patente, 
-                ticket: {
+                userName: user,
+                patente: vehiculo.patente,
+                ticket: { 
                     cantidadDeSolicitud: cantidad, 
-                    fechaDeSolicitud: new Date().toISOString(),
-                    estado: EstadoDelTicket.ESPERANDO
-                }
+                    fechaDeSolicitud: new Date().toISOString(), 
+                    estado: EstadoDelTicket.ESPERANDO }
             });
             setSuceso(true);
-        } catch (err) {
+        } catch {
             setError('Error al crear el ticket');
         }
-    };
-
-    const cancelarOperacion = () => {
-        navigate('/vehiculos');
     };
 
     return (
@@ -67,17 +60,11 @@ export const AgregarTicket = () => {
             <Nav />
             {suceso ? (
                 <div>
-                    <p>El ticket se ha sido cargado exitosamente.</p>
-                    <p>Debe esperar a confirmacion del operador</p>
+                    <p>El ticket se ha cargado exitosamente.</p>
                     <button onClick={() => navigate('/vehiculos')}>Home</button>
                 </div>
             ) : (
-                <TicketForm
-                    vehiculos={vehiculos}
-                    onSubmit={handleSubmit}
-                    onCancel={cancelarOperacion}
-                    error={error}
-                />
+                vehiculo && <TicketForm vehiculo={vehiculo} onSubmit={handleSubmit} onCancel={() => navigate('/vehiculos')} error={error} />
             )}
         </>
     );

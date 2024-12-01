@@ -30,14 +30,12 @@ export const ConsumoVehiculos = () => {
         <>
             <Nav />
             <div className="vehiculo-info">
-                <h2>Información del Vehículo</h2>
-    
                 {errMsgVehiculo && <p className="error-message">{errMsgVehiculo}</p>}
                 {errMsgTicket && <p className="error-message">{errMsgTicket}</p>}
     
                 {consumos ? (
                     <div className="vehiculo-tickets">
-                        <h3>Consumo por Vehículo</h3>
+                        <h1>Consumo por Vehículo</h1>
                         <div className="table-container">
                             <table className="consumo-vehiculo">
                                 <thead>

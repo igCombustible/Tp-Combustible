@@ -70,7 +70,10 @@ export const ListarVehiculo = () => {
                 <td>
                   <div className="botones-accion">
                     {roles.includes('USER') && (
-                      <><BotonAgregarTicket /><BotonVerInfo patente={vehiculo.patente} /></>
+                      <>
+                        <BotonAgregarTicket patente={vehiculo.patente}/>
+                        <BotonVerInfo patente={vehiculo.patente} />
+                      </>
                     )}
                     {roles.includes('ADMIN') && (
                       <>

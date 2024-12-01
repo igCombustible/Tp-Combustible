@@ -26,7 +26,7 @@ function App() {
           <Route path="/registro" element={<Registro />} />
           <Route path="/" element={<Login />} /> 
           <Route path="/infoVehiculo/:patente" element={<InfoVehiculo />} />
-          <Route path="/agregarTicket" element={<AgregarTicket />} /> 
+          <Route path="/agregarTicket/:patente" element={<AgregarTicket />} /> 
           <Route path="/vehiculos-por-consumo" element={<ConsumoVehiculos />} />
           <Route path="/vehiculos-por-promedio-km" element={<ConsumoPorKm />} />
           <Route path="/usuarios" element={<ObtenerUsuarios  />} />
