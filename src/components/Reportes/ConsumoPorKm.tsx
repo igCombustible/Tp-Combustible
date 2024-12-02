@@ -7,7 +7,7 @@ import { Nav } from "../NavBar/Navbar";
 export const ConsumoPorKm = () => {
     const [promedios, setPromedios] = useState<PromedioConsumo[]>([]);
 
-    const PROMEDIOSCONSUMO = '/vehiculo/promedios';
+    const PROMEDIOSCONSUMO = '/vehiculo/estadisticas';
     
 
     const [errMsgVehiculo, setErrMsgVehiculo] = useState<string | null>(null);
@@ -54,7 +54,7 @@ export const ConsumoPorKm = () => {
                                 </thead>
                                 <tbody>
                                 {[...promedios]
-                                            .sort((a, b) => b.kmPorLitroConsumido - a.kmPorLitroConsumido)
+                                            .sort((a, b) => b.promedioKilometros - a.promedioKilometros)
                                             .map((promedio) => (
                                         <tr key={promedio.patente}>
                                             <td>{promedio.patente}</td>
@@ -62,7 +62,7 @@ export const ConsumoPorKm = () => {
                                             <td>{promedio.modelo}</td>
                                             <td>{promedio.km}</td>
                                             <td>{promedio.consumo}</td>
-                                            <td>{promedio.kmPorLitroConsumido}</td>  
+                                            <td>{promedio.promedioKilometros.toFixed(2)}</td>  
                                         </tr>
                                     ))}
                                 </tbody>

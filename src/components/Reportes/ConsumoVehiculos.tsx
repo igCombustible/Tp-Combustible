@@ -6,7 +6,7 @@ import { Nav } from "../NavBar/Navbar";
 export const ConsumoVehiculos = () => {
     const [consumos, setConsumos] = useState<ConsumoVehiculo[]>([]);
 
-    const CONSUMOS = '/vehiculo/consumos';
+    const CONSUMOS = '/vehiculo/estadisticas';
     
 
     const [errMsgVehiculo, setErrMsgVehiculo] = useState<string | null>(null);

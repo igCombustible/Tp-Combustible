@@ -4,5 +4,5 @@ export type PromedioConsumo = {
     patente: string;
     km: number;
     consumo: number;
-    kmPorLitroConsumido: number;
+    promedioKilometros: number;
   }
