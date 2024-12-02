@@ -37,7 +37,7 @@ export const AgregarTicket = () => {
         if (patente) fetchVehiculo();
     }, [patente]);
 
-    const handleSubmit = async (cantidad) => {
+    const handleSubmit = async (cantidad: number) => {
         if (!vehiculo || cantidad <= 0) return setError('Por favor, selecciona un vehículo y una cantidad válida');
 
         try {
@@ -64,7 +64,7 @@ export const AgregarTicket = () => {
                     <button onClick={() => navigate('/vehiculos')}>Home</button>
                 </div>
             ) : (
-                vehiculo && <TicketForm vehiculo={vehiculo} onSubmit={handleSubmit} onCancel={() => navigate('/vehiculos')} error={error} />
+                vehiculo && <TicketForm vehiculo={vehiculo} onSubmit={handleSubmit} error={error} />
             )}
         </>
     );

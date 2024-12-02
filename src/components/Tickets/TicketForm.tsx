@@ -5,17 +5,16 @@ import { BotonCancelar } from '../Botones/BotonCancelar';
 
 interface TicketFormProps {
     vehiculo: Vehiculo; 
-    onSubmit: (patente: string, cantidad: number) => void;
-    onCancel: () => void;
+    onSubmit: (cantidad: number) => void;
     error: string;
 }
 
-export const TicketForm: React.FC<TicketFormProps> = ({ vehiculo, onSubmit, onCancel, error }) => {
+export const TicketForm: React.FC<TicketFormProps> = ({ vehiculo, onSubmit, error }) => {
     const [cantidad, setCantidad] = useState<number>(0);
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        onSubmit(vehiculo.patente, cantidad); 
+        onSubmit(cantidad); 
     };
 
     return (
