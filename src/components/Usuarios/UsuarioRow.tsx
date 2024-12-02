@@ -13,20 +13,24 @@ interface UsuarioRowProps {
 
 export const UsuarioRow: React.FC<UsuarioRowProps> = ({ usuario, onAsignarRol, onAceptar, onRechazar,onForzar }) => {
 
+    const roles = JSON.parse(sessionStorage.getItem('Rol') || '[]');
+
     return (
         <tr>
             <td>{usuario.name}</td>
             <td>{usuario.email}</td>
             <td>{usuario.roles.join(", ")}</td>
-            <td>
-                <BotonesAccion 
-                    usuario={usuario} 
-                    onAsignarRol={onAsignarRol}
-                    onAceptar={onAceptar} 
-                    onRechazar={onRechazar} 
-                    onForzar={onForzar}
-                />
-            </td>
+            {(roles.includes('ADMIN') || roles.includes('OPERADOR')) &&(
+                <td>
+                    <BotonesAccion 
+                        usuario={usuario} 
+                        onAsignarRol={onAsignarRol}
+                        onAceptar={onAceptar} 
+                        onRechazar={onRechazar} 
+                        onForzar={onForzar}
+                    />
+                </td>
+            )}
         </tr>
     );
 };

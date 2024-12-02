@@ -16,6 +16,8 @@ interface ListaUsuariosProps {
 export const ListarUsuarios: React.FC<ListaUsuariosProps> = ({ usuarios, onAsignarRol, onAceptar, onRechazar , onForzar}) => {
     const [searchEmail, setSearchEmail] = useState<string>('');
     const [estadoFiltro, setEstadoFiltro] = useState<string>('todos');
+    const roles = JSON.parse(sessionStorage.getItem('Rol') || '[]');
+
 
     const filteredUsuarios = usuarios.filter((usuario) => {
         const matchesEmail = usuario.email.toLowerCase().includes(searchEmail.toLowerCase());
@@ -53,7 +55,9 @@ export const ListarUsuarios: React.FC<ListaUsuariosProps> = ({ usuarios, onAsign
                             <th>Nombre</th>
                             <th>Email</th>
                             <th>Rol</th>
-                            <th>Acciones</th>
+                            {(roles.includes('ADMIN') || roles.includes('OPERADOR')) &&(
+                                <th>Acciones</th>
+                            )}
                         </tr>
                     </thead>
                     <tbody>

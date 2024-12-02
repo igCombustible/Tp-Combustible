@@ -2,6 +2,7 @@ import React, { useRef, useEffect, useState, FormEvent } from 'react';
 import { Link } from 'react-router-dom';
 import apiClient from '../../api/apiService';
 import './Registro.css';
+import { EstadoPassword } from '../../modelo/EstadoPassword';
 
 const USER_REGEX = /^[a-zA-Z][a-zA-Z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,24}$/;
@@ -73,7 +74,13 @@ const Registro: React.FC = () => {
     try {
 
       const response = await apiClient.post(REGISTER_URL, 
-        JSON.stringify({ name: user, email, password: pwd, usuarioRoles: [{ rol: { id:  idRol} }],estado: 'PENDIENTE' }),
+        JSON.stringify({ 
+                name: user, 
+                email, 
+                password: pwd, 
+                usuarioRoles: [{ rol: { id:  idRol} }],
+                estado: 'PENDIENTE', 
+                estadop: 'HABILITADO'}),
       );
       console.log("Registro exitoso:", response.data);
       setSuccess(true);

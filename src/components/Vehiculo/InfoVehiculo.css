@@ -11,12 +11,11 @@
   text-align: center;
   color: #333;
 }
-.vehiculo-caracteristicas {
-  margin-top: 300px;
-}
 
-.table-container {
-  overflow-x: auto; /* Maneja el scroll horizontal si es necesario */
+.table-container-Tickets {
+  max-height: calc(6 * 60px);
+  overflow-y: auto; 
+  overflow-x: auto;
 }
 
 table {

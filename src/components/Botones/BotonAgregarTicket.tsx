@@ -1,10 +1,10 @@
 import React from "react"
-import { Link } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 
-export const BotonAgregarTicket = () => {
+export const BotonAgregarTicket = ({ patente }) => {
     return(
         <>
-        <Link to={`/agregarTicket`}>
+        <Link to={`/ticket/${patente}/agregar`}>
             <button className="create-ticket-button" data-tooltip="Crear ticket">
                 <i className="bi bi-ticket-perforated"></i>
             </button>

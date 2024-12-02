@@ -9,7 +9,6 @@ import { ConsumoVehiculo } from '../../modelo/ConsumoVehiculo';
 import { BotonAgregarTicket } from '../Botones/BotonAgregarTicket';
 import { BotonEditar } from '../Botones/BotonEditar';
 import { BotonEliminar } from '../Botones/BotonEliminar';
-import { BotonVerInfo } from '../Botones/BotonVerInfo';
 
 
 export const InfoVehiculo = () => {
@@ -76,7 +75,7 @@ export const InfoVehiculo = () => {
                         <div className="botones-accion">
                             {roles.includes('USER') && (
                                 <>
-                                <BotonAgregarTicket />
+                                <BotonAgregarTicket patente={patente} />
                                 </>
                             )}
                             {roles.includes('ADMIN') && (
@@ -91,7 +90,7 @@ export const InfoVehiculo = () => {
                             <h3>Tickets del Vehículo</h3>
                             {tickets ? (
                                 tickets.length > 0 ? (
-                                    <div className="table-container">
+                                    <div className="table-container-Tickets">
                                         <table>
                                             <thead>
                                                 <tr>

@@ -3,6 +3,7 @@ import apiClient from "../../api/apiService";
 import { PromedioConsumo } from "../../modelo/PromedioConsumo";
 import React from "react";
 import { Nav } from "../NavBar/Navbar";
+import './ConsumoPorKm.css';
 
 export const ConsumoPorKm = () => {
     const [promedios, setPromedios] = useState<PromedioConsumo[]>([]);
@@ -32,14 +33,12 @@ export const ConsumoPorKm = () => {
         <>
             <Nav />
             <div className="vehiculo-info">
-                <h2>Información del Vehículo</h2>
-    
                 {errMsgVehiculo && <p className="error-message">{errMsgVehiculo}</p>}
                 {errMsgTicket && <p className="error-message">{errMsgTicket}</p>}
     
                 {promedios ? (
                     <div className="vehiculo-tickets">
-                        <h3>Kilometros recorridos por litros consumidos</h3>
+                        <h1>Kilometros recorridos por litros consumidos</h1>
                         <div className="table-container">
                             <table className="consumo-promedio">
                                 <thead>
@@ -48,7 +47,7 @@ export const ConsumoPorKm = () => {
                                         <th>Marca</th>
                                         <th>Modelo</th>
                                         <th>Km recorridos</th>
-                                        <th>Consumo</th>
+                                        <th>Consumo total</th>
                                         <th>Km por litro consumido</th>
                                     </tr>
                                 </thead>

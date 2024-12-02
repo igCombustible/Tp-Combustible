@@ -1,6 +1,15 @@
-label {
-    font-size: 16px;
-    color: #000; /* Color negro o uno que contraste con el fondo */
-    display: inline-block; /* Asegura que el label ocupe espacio */
-    margin-bottom: 5px; /* Espaciado debajo del label */
+.checkbox-container {
+  display: flex;
+  align-items: center;     
+}
+
+.checkbox-vehiculo {
+  width: 15px;
+  margin-bottom: 25px;      
+}
+
+.estado {
+  font-size: 16px;
+  color: #333;
+  padding-left: 9px;
 }

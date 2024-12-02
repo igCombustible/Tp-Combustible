@@ -40,7 +40,7 @@ export const ListarVehiculo = () => {
       <div className="header-container">
         <h1>Lista de Vehículos</h1>
         {roles.includes('ADMIN') && (
-          <Link to={`/crearVehiculo`}>
+          <Link to={`/vehiculo/crear`}>
             <button className="create-button">Agregar</button>
           </Link>
         )}
@@ -70,7 +70,10 @@ export const ListarVehiculo = () => {
                 <td>
                   <div className="botones-accion">
                     {roles.includes('USER') && (
-                      <><BotonAgregarTicket /><BotonVerInfo patente={vehiculo.patente} /></>
+                      <>
+                        <BotonAgregarTicket patente={vehiculo.patente}/>
+                        <BotonVerInfo patente={vehiculo.patente} />
+                      </>
                     )}
                     {roles.includes('ADMIN') && (
                       <>

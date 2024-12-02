@@ -25,24 +25,24 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/registro" element={<Registro />} />
           <Route path="/" element={<Login />} /> 
-          <Route path="/infoVehiculo/:patente" element={<InfoVehiculo />} />
-          <Route path="/agregarTicket" element={<AgregarTicket />} /> 
-          <Route path="/vehiculos-por-consumo" element={<ConsumoVehiculos />} />
-          <Route path="/vehiculos-por-promedio-km" element={<ConsumoPorKm />} />
           <Route path="/usuarios" element={<ObtenerUsuarios  />} />
 
           <Route path="/restablecer-contrasenia" element={<RestablecerContrasenia />} />
           <Route path="/verificar-codigo/:email" element={<VerificarCodigo />} />
           <Route path="/nueva-contrasenia/:email" element={<NuevaContrasenia />} />
 
+          <Route path="/vehiculo/:patente/info" element={<InfoVehiculo />} />
+          <Route path="/vehiculos/consumo" element={<ConsumoVehiculos />} />
+          <Route path="/vehiculos/promedio-km" element={<ConsumoPorKm />} />
           <Route element={<RutaPrivada roles={['ADMIN']} />}>
-            <Route path="/crearVehiculo" element={<AgregarVehiculo />} />
-            <Route path="/editarVehiculo/:patente" element={<EditarVehiculo />} />
-            <Route path="/eliminarVehiculo/:patente" element={<EliminarVehiculo />} />
+            <Route path="/vehiculo/crear" element={<AgregarVehiculo />} />
+            <Route path="/vehiculo/:patente/editar" element={<EditarVehiculo />} />
+            <Route path="/vehiculo/:patente/eliminar" element={<EliminarVehiculo />} />
           </Route>
           
+          <Route path="/ticket/:patente/agregar" element={<AgregarTicket />} /> 
           <Route element={<RutaPrivada roles={['OPERADOR']} />}>
-            <Route path="/ticketsEsperando" element={<ListaTicketsALaEspera />} />
+            <Route path="/tickets/esperando" element={<ListaTicketsALaEspera />} />
           </Route>
 
           <Route element={<RutaPrivada />}>
