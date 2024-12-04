@@ -3,22 +3,26 @@ import AuthContext from '../../context/AuthProvider';
 import apiClient from '../../api/apiService';
 import { Nav } from "../NavBar/Navbar";
 import { useParams } from 'react-router-dom';
+import {Ticket} from '../../modelo/Ticket'
 import './InfoVehiculo.css'
-import { InformacionVehiculo } from '../../modelo/InformacionVehiculo';
+import { Vehiculo } from '../../modelo/Vehiculo';
 import { BotonAgregarTicket } from '../Botones/BotonAgregarTicket';
 import { BotonEditar } from '../Botones/BotonEditar';
-import { BotonEliminar } from '../Botones/BotonEliminar'
+import { BotonEliminar } from '../Botones/BotonEliminar';
 
 
 export const InfoVehiculo = () => {
     const authContext = useContext(AuthContext);
     const { patente } = useParams<{ patente: string }>();
 
-    const INFOVEHICULO = `/vehiculo/info/${patente}`;
+    const BUSCARVEHICULO = `vehiculo/${patente}`;
+    const TICKETSVEHICULO = `ticket/aceptados/${patente}`;
 
-    const [vehiculo, setVehiculo] = useState<InformacionVehiculo>();
+    const [tickets, setTickets] = useState<Ticket[] | null>(null);
+    const [vehiculo, setVehiculo] = useState<Vehiculo>();
 
     const [errMsgVehiculo, setErrMsgVehiculo] = useState<string | null>(null);
+    const [errMsgTicket, setErrMsgTicket] = useState<string | null>(null);
 
     if (!authContext) {
         throw new Error('No se encontró el contexto de autenticación');
@@ -28,18 +32,27 @@ export const InfoVehiculo = () => {
     const roles = JSON.parse(sessionStorage.getItem('Rol') || '[]');
 
     useEffect(() => {
-        buscarInfoVehiculo();
+        buscarVehiculo();
+        ticketDelVehiculo();
     }, []);
 
-    const buscarInfoVehiculo = async () => {
+    const buscarVehiculo = async () => {
         try {
-            const response = await apiClient.get(INFOVEHICULO);
+            const response = await apiClient.get(BUSCARVEHICULO);
             setVehiculo(response.data);
         } catch (error) {
             setErrMsgVehiculo('No se pudo cargar los datos del vehículo');
         }
     };
 
+    const ticketDelVehiculo = async () => {
+        try {
+            const response = await apiClient.get(TICKETSVEHICULO);
+            setTickets(response.data); 
+        } catch (error) {
+            setErrMsgTicket('Error al obtener los tickets del vehículo');
+        } 
+    };
 
     return (
         <>
@@ -55,8 +68,7 @@ export const InfoVehiculo = () => {
                             <p><strong>Patente:</strong> {vehiculo.patente}</p>
                             <p><strong>Marca:</strong> {vehiculo.marca}</p>
                             <p><strong>Modelo:</strong> {vehiculo.modelo}</p>
-                            <p><strong>Último Kilometraje Conocido:</strong> {vehiculo.km}</p>
-                            <p><strong>Litros Consumidos:</strong> {vehiculo.consumo} L</p>
+                            <p><strong>Último Kilometraje Conocido:</strong> {vehiculo.ultimoValorConocidoKm}</p>
                         </div>
                         
                         <div className="botones-accion">
@@ -75,8 +87,8 @@ export const InfoVehiculo = () => {
                         </div>
                         <div className="vehiculo-tickets">
                             <h3>Tickets del Vehículo</h3>
-                            {vehiculo.tickets ? (
-                                vehiculo.tickets.length > 0 ? (
+                            {tickets ? (
+                                tickets.length > 0 ? (
                                     <div className="table-container">
                                         <table>
                                             <thead>
@@ -86,7 +98,7 @@ export const InfoVehiculo = () => {
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                {vehiculo.tickets
+                                                {tickets
                                                     .sort((a, b) => new Date(a.fechaDeSolicitud).getTime() - new Date(b.fechaDeSolicitud).getTime())
                                                     .map((ticket) => (
                                                     <tr key={ticket.id}>
