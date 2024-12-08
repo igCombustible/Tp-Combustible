@@ -5,7 +5,7 @@ import { Nav } from "../NavBar/Navbar";
 import { useParams } from 'react-router-dom';
 import {Ticket} from '../../modelo/Ticket'
 import './InfoVehiculo.css'
-import { ConsumoVehiculo } from '../../modelo/ConsumoVehiculo';
+import { InformacionVehiculo } from '../../modelo/InformacionVehiculo';
 import { BotonAgregarTicket } from '../Botones/BotonAgregarTicket';
 import { BotonEditar } from '../Botones/BotonEditar';
 import { BotonEliminar } from '../Botones/BotonEliminar';
@@ -15,11 +15,11 @@ export const InfoVehiculo = () => {
     const authContext = useContext(AuthContext);
     const { patente } = useParams<{ patente: string }>();
 
-    const BUSCARVEHICULO = `vehiculo/consumo/${patente}`;
-    const TICKETSVEHICULO = `ticket/infoTickets/${patente}`;
+    const BUSCARVEHICULO = `reporte/info/${patente}`;
+    const TICKETSVEHICULO = `reporte/ticketAceptados/${patente}`;
 
     const [tickets, setTickets] = useState<Ticket[] | null>(null);
-    const [consumo, setConsumo] = useState<ConsumoVehiculo>();
+    const [vehiculo, setVehiculo] = useState<InformacionVehiculo>();
 
     const [errMsgVehiculo, setErrMsgVehiculo] = useState<string | null>(null);
     const [errMsgTicket, setErrMsgTicket] = useState<string | null>(null);
@@ -39,7 +39,7 @@ export const InfoVehiculo = () => {
     const buscarVehiculo = async () => {
         try {
             const response = await apiClient.get(BUSCARVEHICULO);
-            setConsumo(response.data);
+            setVehiculo(response.data);
         } catch (error) {
             setErrMsgVehiculo('No se pudo cargar los datos del vehículo');
         }
@@ -62,14 +62,14 @@ export const InfoVehiculo = () => {
                 
                 {errMsgVehiculo && <p className="error-message">{errMsgVehiculo}</p>}
 
-                {consumo ? (
+                {vehiculo ? (
                     <>  
                         <div className="vehiculo-caracteristicas">
-                            <p><strong>Patente:</strong> {consumo.patente}</p>
-                            <p><strong>Marca:</strong> {consumo.marca}</p>
-                            <p><strong>Modelo:</strong> {consumo.modelo}</p>
-                            <p><strong>Último Kilometraje Conocido:</strong> {consumo.km}</p>
-                            <p><strong>Litros Consumidos:</strong> {consumo.consumo} L</p>
+                            <p><strong>Patente:</strong> {vehiculo.patente}</p>
+                            <p><strong>Marca:</strong> {vehiculo.marca}</p>
+                            <p><strong>Modelo:</strong> {vehiculo.modelo}</p>
+                            <p><strong>Último Kilometraje Conocido:</strong> {vehiculo.km}</p>
+                            <p><strong>Litros Consumidos:</strong> {vehiculo.consumo} L</p>
                         </div>
                         
                         <div className="botones-accion">
@@ -80,8 +80,8 @@ export const InfoVehiculo = () => {
                             )}
                             {roles.includes('ADMIN') && (
                                 <>
-                                <BotonEditar patente={consumo.patente}/>
-                                <BotonEliminar patente={consumo.patente}/>
+                                <BotonEditar patente={vehiculo.patente}/>
+                                <BotonEliminar patente={vehiculo.patente}/>
                                 </>
                             )}
                   

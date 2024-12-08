@@ -1,12 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
-import { ConsumoVehiculo } from "../../modelo/ConsumoVehiculo";
+import { InformacionVehiculo } from "../../modelo/InformacionVehiculo";
 import apiClient from "../../api/apiService";
 import { Nav } from "../NavBar/Navbar";
 
 export const ConsumoVehiculos = () => {
-    const [consumos, setConsumos] = useState<ConsumoVehiculo[]>([]);
+    const [consumos, setConsumos] = useState<InformacionVehiculo[]>([]);
 
-    const CONSUMOS = '/vehiculo/consumos';
+    const CONSUMOS = '/reporte/info';
     
 
     const [errMsgVehiculo, setErrMsgVehiculo] = useState<string | null>(null);

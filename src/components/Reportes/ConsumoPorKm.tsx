@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
 import apiClient from "../../api/apiService";
-import { PromedioConsumo } from "../../modelo/PromedioConsumo";
+import { InformacionVehiculo } from "../../modelo/InformacionVehiculo";
 import React from "react";
 import { Nav } from "../NavBar/Navbar";
-import './ConsumoPorKm.css';
+import './Reportes.css';
 
 export const ConsumoPorKm = () => {
-    const [promedios, setPromedios] = useState<PromedioConsumo[]>([]);
+    const [reportes, setReportes] = useState<InformacionVehiculo[]>([]);
 
-    const PROMEDIOSCONSUMO = '/vehiculo/promedios';
+    const INFOVEHICULO = '/reporte/info';
     
 
     const [errMsgVehiculo, setErrMsgVehiculo] = useState<string | null>(null);
@@ -22,8 +22,8 @@ export const ConsumoPorKm = () => {
 
     const buscarPromedios = async () => {
         try {
-            const response = await apiClient.get(PROMEDIOSCONSUMO);
-            setPromedios(response.data);
+            const response = await apiClient.get(INFOVEHICULO);
+            setReportes(response.data);
         } catch (error) {
             setErrMsgVehiculo('No se pudo cargar los datos del vehículo');
         }
@@ -36,7 +36,7 @@ export const ConsumoPorKm = () => {
                 {errMsgVehiculo && <p className="error-message">{errMsgVehiculo}</p>}
                 {errMsgTicket && <p className="error-message">{errMsgTicket}</p>}
     
-                {promedios ? (
+                {reportes ? (
                     <div className="vehiculo-tickets">
                         <h1>Kilometros recorridos por litros consumidos</h1>
                         <div className="table-container">
@@ -52,16 +52,16 @@ export const ConsumoPorKm = () => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                {[...promedios]
-                                            .sort((a, b) => b.kmPorLitroConsumido - a.kmPorLitroConsumido)
-                                            .map((promedio) => (
-                                        <tr key={promedio.patente}>
-                                            <td>{promedio.patente}</td>
-                                            <td>{promedio.marca}</td>
-                                            <td>{promedio.modelo}</td>
-                                            <td>{promedio.km}</td>
-                                            <td>{promedio.consumo}</td>
-                                            <td>{promedio.kmPorLitroConsumido}</td>  
+                                {[...reportes]
+                                            .sort((a, b) => b.kmPromedio - a.kmPromedio)
+                                            .map((reportes) => (
+                                        <tr key={reportes.patente}>
+                                            <td>{reportes.patente}</td>
+                                            <td>{reportes.marca}</td>
+                                            <td>{reportes.modelo}</td>
+                                            <td>{reportes.km}</td>
+                                            <td>{reportes.consumo}</td>
+                                            <td>{reportes.kmPromedio.toFixed(2)}</td>  
                                         </tr>
                                     ))}
                                 </tbody>
