@@ -13,9 +13,11 @@ import { AgregarTicket } from './components/Tickets/AgregarTicket';
 import { ObtenerUsuarios } from './components/Usuarios/ObtenerUsuarios';
 import { ConsumoVehiculos } from './components/Reportes/ConsumoVehiculos';
 import { ConsumoPorKm } from './components/Reportes/ConsumoPorKm';
+import { ReporteGeneral } from "./components/Reportes/ReporteGeneral";
 import { RestablecerContrasenia } from './components/RestablecerContrasenia/RestablecerContrasenia';
 import { VerificarCodigo } from './components/RestablecerContrasenia/VerificarCodigo';
 import { NuevaContrasenia } from './components/RestablecerContrasenia/NuevaContrasenia';
+
 
 function App() {
   return (
@@ -34,6 +36,7 @@ function App() {
           <Route path="/vehiculo/:patente/info" element={<InfoVehiculo />} />
           <Route path="/vehiculos/consumo" element={<ConsumoVehiculos />} />
           <Route path="/vehiculos/promedio-km" element={<ConsumoPorKm />} />
+          <Route path="/reporte-general" element={<ReporteGeneral />} />
           <Route element={<RutaPrivada roles={['ADMIN']} />}>
             <Route path="/vehiculo/crear" element={<AgregarVehiculo />} />
             <Route path="/vehiculo/:patente/editar" element={<EditarVehiculo />} />
@@ -46,9 +49,9 @@ function App() {
           </Route>
 
           <Route element={<RutaPrivada />}>
-            <Route path="/vehiculos" element={<Home />} /> 
+            <Route path="/vehiculos" element={<Home />} />
           </Route>
-          
+
         </Routes>
       </div>
     </Router>

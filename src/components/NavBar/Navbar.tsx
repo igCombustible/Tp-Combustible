@@ -25,6 +25,7 @@ export const Nav = () => {
               <ul className="dropdown-menu">
                 <li><Link className="dropdown-item" aria-current="page" to="/vehiculos/consumo">Vehiculos por consumo</Link></li>
                 <li><Link className="dropdown-item" aria-current="page" to="/vehiculos/promedio-km">Vehiculos por promedio de Km recorridos por consumo</Link></li>
+                <li><Link className="dropdown-item" aria-current="page" to="/reporte-general">Reporte General</Link></li>
               </ul>
               </li>
               {roles.includes('OPERADOR') && (
@@ -40,5 +41,4 @@ export const Nav = () => {
     </nav>
   );
 };
-
 
